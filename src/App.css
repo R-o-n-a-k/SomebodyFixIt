@@ -1,0 +1,137 @@
+/* ---------------------------------- Google Font ---------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ------------------------------ Variables CSS ----------------------------- */
+:root {
+    /* ---------------------------------- color --------------------------------- */
+    --pure-white: #ffffff;
+    --pure-black: #000000;
+    --white-color: #F5F8FA;
+
+    /* --text: #1d070a; */
+    --text: #313131;
+    --subText: #616161;
+    --background: #fefbfb;
+    --primary: #cf3043;
+    --secondary: #8df0ea;
+    --accent: #5e61e9;
+
+    /* :root[data-theme="light"] {
+        --text: #1d070a;
+        --background: #fefbfb;
+        --primary: #cf3043;
+        --secondary: #8df0ea;
+        --accent: #5e61e9;
+    }
+
+    :root[data-theme="dark"] {
+        --text: #f8e2e5;
+        --background: #040101;
+        --primary: #cf3043;
+        --secondary: #0f716a;
+        --accent: #1618a2;
+    } */
+    --box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    --animate: .3s ease-in-out;
+    /* ---------------------------------- Fonts --------------------------------- */
+    --body-font: "Poppins",
+        sans-serif;
+    --logo-font: "Orbitron",
+        sans-serif;
+
+    /* ---------------------------------- Fonts --------------------------------- */
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+    --tiny-font-size: 0.635rem;
+}
+
+/* ---------------------------------- Base ---------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--body-font);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    color: inherit !important;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.main {
+    max-width: 65%;
+    margin: 4rem auto 0 auto;
+    height: 100vh;
+}
+
+
+/* ------------------------------- Scroll Bar ------------------------------- */
+
+::-webkit-scrollbar {
+    width: .5rem;
+    background-color: var(--background);
+    border-radius: .3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: .5rem;
+}
+
+/* --------------------------- Responsive Section --------------------------- */
+/* Responsive Fonts */
+@media screen and (max-width:992px) {}
+
+/* ------------------------------- BREAKPOINTS ------------------------------ */
+
+
+@media screen and (max-width:992px) {}
+
+@media screen and (max-width:768px) {}
+
+@media screen and (max-width:576px) {
+
+    .main {
+        max-width: 85%;
+    }
+}
+
+@media screen and (max-width:380px) {}
+
+@media screen and (max-width:350px) {}

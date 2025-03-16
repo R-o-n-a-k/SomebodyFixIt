@@ -1,0 +1,217 @@
+.ask-problem {
+    width: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border-radius: 5rem;
+    cursor: pointer;
+}
+
+.ask-input {
+    margin: auto 1rem;
+    border: none;
+    outline: none;
+}
+
+.ask-input:hover {
+    border-color: #888;
+}
+
+.ask-input:focus-within {
+    border-color: var(--accent);
+}
+
+.ask-modal {
+    height: 30rem;
+    width: 40rem;
+    padding: .5rem;
+}
+
+.ask-desc {
+    width: 100%;
+    border-radius: 1rem;
+    padding: 10px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.ask-file-icon {
+    color: var(--accent);
+    font-size: var(--normal-font-size);
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+    left: 2rem;
+}
+
+.ask-file-icon:hover {
+    scale: 1.1;
+    animation: var(--animate);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.ask-uploaded-file {
+    width: auto;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.ask-uploaded-file-delete {
+    position: relative;
+    left: .5rem;
+    color: lightcoral;
+    cursor: pointer;
+    font-size: var(--normal-font-size);
+    background: transparent;
+}
+
+.ask-uploaded-file-delete:hover {
+    scale: 1.1;
+    animation: var(--animate);
+}
+
+.ask-post-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    background-color: var(--primary);
+    color: var(--pure-white);
+    border: none;
+    border-radius: 1.5rem;
+    padding: .5rem 1rem;
+    font-size: var(--normal-font-size);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ask-post-button:hover {
+    background-color: var(--accent);
+    animation: var(--animate);
+}
+
+/* --------------------------- Responsive Section --------------------------- */
+/* Responsive Fonts */
+@media screen and (max-width:992px) {}
+
+/* ------------------------------- BREAKPOINTS ------------------------------ */
+
+
+@media screen and (max-width:992px) {}
+
+@media screen and (max-width:768px) {
+    .ask-problem {
+        font-size: var(--small-font-size);
+    }
+
+    .ask-modal {
+        height: 30rem;
+        width: 30rem;
+    }
+
+    .ask-uploaded-file {
+        height: 200px;
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .ask-problem {
+        padding: .5rem;
+    }
+
+    .ask-input {
+        margin: auto .5rem;
+    }
+
+    .ask-modal {
+        height: 25rem;
+        width: 25rem;
+        font-size: var(--smaller-font-size);
+    }
+
+    .ask-uploaded-file {
+        width: 350px;
+        height: 180px;
+    }
+
+}
+
+@media screen and (max-width:450px) {
+
+    .ask-modal {
+        height: 20rem;
+        width: 20rem;
+    }
+
+    .ask-uploaded-file {
+        width: 250px;
+        height: 100px;
+    }
+
+    .ask-post-button {
+        padding: .3rem 1rem;
+        font-size: var(--small-font-size);
+    }
+
+    .ask-file-icon {
+        font-size: var(--small-font-size);
+    }
+
+    .ask-uploaded-file-delete {
+        font-size: var(--small-font-size);
+    }
+
+    .post-data {
+        font-size: var(--small-font-size);
+
+    }
+
+}
+
+@media screen and (max-width:380px) {
+
+
+    .ask-problem {
+        padding: .5rem;
+    }
+
+    .ask-input {
+        margin: auto .5rem;
+    }
+
+    .avatar {
+        padding: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: var(--small-font-size);
+    }
+
+    .ask-modal {
+        height: 20rem;
+        width: 15rem;
+    }
+
+    .ask-uploaded-file {
+        width: auto;
+        height: 100px;
+    }
+
+    .ask-post-button {
+        padding: .3rem 1rem;
+        font-size: var(--small-font-size);
+    }
+
+    .ask-file-icon {
+        font-size: var(--small-font-size);
+    }
+
+    .ask-uploaded-file-delete {
+        font-size: var(--small-font-size);
+    }
+
+}
