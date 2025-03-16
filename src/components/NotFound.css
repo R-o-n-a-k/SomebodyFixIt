@@ -1,0 +1,89 @@
+.notFound {
+    color: var(--text);
+    height: 100vh;
+    background-color: var(--primary);
+}
+
+.notFound-msg {
+    background-color: var(--background);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: auto;
+    box-shadow: var(--box-shadow);
+    padding: 3rem 2rem 3rem;
+    border-radius: 1rem;
+}
+
+.notFound h1 {
+    color: lightcoral;
+    margin-bottom: .5rem;
+}
+
+.notFound h3 {
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+
+.notFound p {
+    color: var(--subText);
+    letter-spacing: 1px;
+    text-align: justify;
+    margin-bottom: 2rem;
+    font-size: var(--normal-font-size);
+}
+
+.notFound button {
+    cursor: pointer;
+    background: var(--accent);
+    color: var(--pure-white);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.notFound button:hover {
+    background: var(--primary);
+    animation: var(--animate);
+}
+
+
+/* --------------------------- Responsive Section --------------------------- */
+
+@media screen and (max-width:768px) {
+    .notFound-msg {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:576px) {
+
+    .notFound h1 {
+        font-size: 2rem;
+    }
+
+    .notFound h3 {
+        font-size: var(--normal-font-size);
+    }
+
+
+    .notFound p {
+
+        font-size: var(--smaller-font-size);
+    }
+
+    .notFound button {
+        font-size: var(--smaller-font-size);
+
+    }
+}
+
+@media screen and (max-width:380px) {
+    .notFound-msg {
+        width: 85%;
+    }
+}
