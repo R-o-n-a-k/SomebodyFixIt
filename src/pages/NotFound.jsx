@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/NotFound.css";
+import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
@@ -12,12 +13,8 @@ function NotFound() {
           for any mistakes and try again.
         </p>
 
-        <button
-          onClick={() => {
-            window.location.href = "/";
-          }}
-        >
-          Go Back
+        <button>
+          <Link to="/">Go Back</Link>
         </button>
       </div>
     </div>
