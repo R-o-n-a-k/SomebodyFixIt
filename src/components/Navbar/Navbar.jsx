@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/images/SomebodyFixIt.svg";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   /* ---------------------------- change background navbar --------------------------- */
@@ -9,6 +10,11 @@ function Navbar() {
     if (this.scrollY >= 10) header.classList.add("scroll__header");
     else header.classList.remove("scroll__header");
   });
+
+  const navigate = useNavigate();
+  const handleAvatarClick = () => {
+    navigate("/my-profile"); // Navigate to My Profile page
+  };
 
   return (
     <>
@@ -34,7 +40,7 @@ function Navbar() {
               <div className="profile">
                 <i className="fa-solid fa-user" />
                 <div className="profile-content">
-                  <a href="#">My Profile</a>
+                  <a onClick={handleAvatarClick}>My Profile</a>
                   <a href="#">Logout</a>
                 </div>
               </div>
