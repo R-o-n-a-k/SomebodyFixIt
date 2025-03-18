@@ -18,29 +18,31 @@ function LoginRegister() {
               </p>
               <input
                 type="text"
-                name="txt"
+                name="signup-name"
                 placeholder="FirstName LastName"
-                id=""
+                id="signup-name"
                 required
                 className="form-input"
               />
               <input
                 type="email"
-                name="email"
+                name="signup-email"
                 placeholder="abc@gmail.com"
-                id=""
+                id="signup-email"
                 required
                 className="form-input"
               />
               <input
                 type="password"
-                name="pswd"
-                id=""
+                name="signup-pswd"
+                id="signup-pswd"
                 placeholder="Enter your new password"
                 required
                 className="form-input"
               />
-              <button className="form-buton signup-btn">Sign Up</button>
+              <button className="form-buton signup-btn" name="signup-btn">
+                Sign Up
+              </button>
             </form>
           </div>
 
@@ -50,25 +52,27 @@ function LoginRegister() {
                 Login
               </label>
               <p className="form-subheading">
-                Continue from where you left off!
+                Continue from where you left off.
               </p>
               <input
                 type="email"
-                name="email"
+                name="login-email"
                 placeholder="Enter your email"
-                id=""
+                id="login-email"
                 required
                 className="form-input"
               />
               <input
                 type="password"
-                name="pswd"
-                id=""
+                name="login-pswd"
+                id="login-pswd"
                 placeholder="Enter your password"
                 required
                 className="form-input"
               />
-              <button className="form-buton login-btn">Sign In</button>
+              <button className="form-buton login-btn" name="login-btn">
+                Login
+              </button>
             </form>
           </div>
         </div>
