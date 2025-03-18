@@ -22,7 +22,7 @@ function Navbar() {
         <nav className="nav">
           <div className="logo">
             <img src={logo} href="index.html" className="nav-logo" />
-            SomebodyFixIt
+            Somebody<span>FixIt</span>
           </div>
           <ul className="nav-list">
             <li>

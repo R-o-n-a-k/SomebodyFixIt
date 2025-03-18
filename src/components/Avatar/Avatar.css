@@ -16,5 +16,5 @@
 
 .avatar:hover {
     scale: 1.1;
-    animation: var(--animate);
+    transition: var(--animate);
 }

@@ -48,7 +48,7 @@
 
 .ask-file-icon:hover {
     scale: 1.1;
-    animation: var(--animate);
+    transition: var(--animate);
 }
 
 input[type="file"] {
@@ -72,7 +72,7 @@ input[type="file"] {
 
 .ask-uploaded-file-delete:hover {
     scale: 1.1;
-    animation: var(--animate);
+    transition: var(--animate);
 }
 
 .ask-post-button {
@@ -91,7 +91,7 @@ input[type="file"] {
 
 .ask-post-button:hover {
     background-color: var(--accent);
-    animation: var(--animate);
+    transition: var(--animate);
 }
 
 /* --------------------------- Responsive Section --------------------------- */

@@ -48,7 +48,7 @@
 
 .notFound button:hover {
     background: var(--primary);
-    animation: var(--animate);
+    transition: var(--animate);
 }
 
 
