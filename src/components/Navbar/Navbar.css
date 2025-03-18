@@ -5,7 +5,10 @@
     left: 0;
     z-index: 100;
     color: var(--font);
-    background-color: #fff0f3;
+    background-color: #FFF0F3;
+    /* background-color: #F8F3F2; */
+    /* snow */
+
 }
 
 .nav {
@@ -27,6 +30,10 @@
 
 }
 
+.logo span {
+    color: var(--primary);
+}
+
 .logo img {
     height: 5vh;
     cursor: pointer;
@@ -42,6 +49,7 @@
 
 .nav-list li:hover {
     color: var(--accent);
+    transition: var(--animate);
 }
 
 /* Change background header on scroll */

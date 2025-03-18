@@ -1,0 +1,223 @@
+.lr-main {
+    background-image: url("../assets/images/login-bg.svg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.lr-container {
+    width: 350px;
+    height: 500px;
+    background: var(--background);
+    overflow: hidden;
+    border-radius: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+#chk {
+    display: none;
+}
+
+/* ----------------common form css--------------------- */
+
+.form-heading {
+    color: var(--primary);
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 50px 50px 20px 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.form-subheading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: var(--smaller-font-size);
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.form-input {
+    width: 60%;
+    height: 2rem;
+    background: transparent;
+    justify-content: center;
+    display: flex;
+    margin: 1rem auto;
+    padding: 1rem;
+    outline: none;
+    border-radius: 3rem;
+}
+
+.form-input:focus:valid {
+    border-color: #32e875;
+}
+
+.form-input:focus:invalid {
+    border-color: #ff8c08;
+}
+
+/* -----------------form buttons-------------------- */
+
+.form-buton {
+    width: 60%;
+    height: 2.5rem;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    outline: none;
+    border: none;
+    border-radius: 3rem;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
+/* -------------------sign-up------------------ */
+.signup {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.signup .form-subheading {
+    color: var(--Text);
+
+}
+
+/* signup input */
+.signup .form-input {
+    border-color: var(--primary);
+    color: var(--pure-black);
+}
+
+/* sigup button css */
+.signup-btn {
+    background-color: var(--primary);
+    color: var(--pure-white);
+}
+
+.signup-btn:hover {
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    transition: all .3s ease-in-out;
+}
+
+
+
+/* --------------------login---------------- */
+
+.login {
+    height: 460px;
+    background: var(--primary);
+    border-radius: 60% / 10%;
+    transform: translateY(-180px);
+    transition: .8s ease-in-out;
+}
+
+/* login headind and subheading */
+.login .form-heading {
+
+    color: var(--pure-white);
+    transform: scale(.6);
+}
+
+.login .form-subheading {
+    color: lightgrey;
+}
+
+/*login input*/
+.login .form-input {
+    border-color: var(--pure-white);
+    color: var(--pure-white);
+}
+
+.login .form-input::placeholder {
+    color: lightcoral;
+}
+
+/* login button css */
+.login-btn {
+    color: var(--primary);
+    background-color: var(--pure-white);
+}
+
+.login-btn:hover {
+    border: 2px solid var(--pure-white);
+    background: transparent;
+    color: var(--pure-white);
+    transition: all .3s ease-in-out;
+}
+
+/* -----------pages swapped on click -------------*/
+#chk:checked~.login {
+    transform: translateY(-500px);
+}
+
+#chk:checked~.login .form-heading {
+    transform: scale(1);
+}
+
+#chk:checked~.signup .form-heading {
+    transform: scale(.6);
+}
+
+@media screen and (max-width:768px) {}
+
+@media screen and (max-width:576px) {}
+
+@media screen and (max-width:380px) {
+
+    .lr-container {
+        width: 300px;
+        height: 400px;
+    }
+
+    .form-heading {
+        font-size: 1.5rem;
+        margin: 40px auto 20px auto;
+
+    }
+
+    .form-subheading {
+        font-size: var(--tiny-font-size);
+        margin-bottom: 1.5rem;
+    }
+
+    .form-input {
+        width: 70%;
+        height: 1rem;
+        margin: 1rem auto;
+        padding: .8rem;
+    }
+
+    .form-buton {
+        width: 70%;
+        height: 2rem;
+        font-size: var(--smaller-font-size);
+        margin-top: 2rem;
+    }
+
+    .login {
+        background: var(--primary);
+        transform: translateY(-130px);
+
+    }
+
+    #chk:checked~.login {
+        transform: translateY(-400px);
+    }
+
+
+
+}
+
+@media screen and (max-width:350px) {}

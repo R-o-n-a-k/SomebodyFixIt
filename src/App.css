@@ -33,7 +33,7 @@
         --accent: #1618a2;
     } */
     --box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
-    --animate: .3s ease-in-out;
+    --animate: .2s ease-in-out;
     /* ---------------------------------- Fonts --------------------------------- */
     --body-font: "Poppins",
         sans-serif;
