@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import "../components/CSS/MyProfile.css";
+import defaultProfile from "../assets/images/default-user.png";
 
 export default function MyProfile() {
   const [profileData, setProfileData] = useState({
@@ -8,7 +9,7 @@ export default function MyProfile() {
     bio: "Tech Enthusiast",
     email: "ronakpatel@example.com",
     phone: "+91 912345678",
-    profilePicture: "https://dummyimage.com/400x400/5e60e9/ffffff&text=RP",
+    profilePicture: defaultProfile,
   });
 
   const [editField, setEditField] = useState(null);
@@ -52,6 +53,9 @@ export default function MyProfile() {
                   src={profileData.profilePicture}
                   alt="Profile"
                   className="profile-picture"
+                  onError={(e) => {
+                    e.target.src = defaultProfile;
+                  }}
                 />
               </label>
               <input
@@ -129,6 +133,8 @@ export default function MyProfile() {
                       value={inputValue}
                       onChange={handleInputChange}
                       placeholder="Enter your email"
+                      title="Please enter a valid email address"
+                      required
                     />
                     <i
                       class="fa-solid fa-check edit-field-save"
@@ -157,6 +163,10 @@ export default function MyProfile() {
                       value={inputValue}
                       onChange={handleInputChange}
                       placeholder="Enter your phone"
+                      pattern="\d{10}"
+                      maxlength="10"
+                      title="Phone number must be exactly 10 digits"
+                      required
                     />
                     <i
                       class="fa-solid fa-check edit-field-save"

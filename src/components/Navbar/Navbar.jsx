@@ -29,18 +29,19 @@ function Navbar() {
           </div>
           <ul className="nav-list">
             <li>
+              <div className="search">
+                <input name="" id="" placeholder="Search your problem!" />
+                <i className="fa-solid fa-magnifying-glass" />
+              </div>
+            </li>
+            <li>
               <a href="">
                 <Link to="/">
                   <i className="fa-solid fa-house" />
                 </Link>
               </a>
             </li>
-            <li>
-              <div className="search">
-                <input name="" id="" placeholder="Search your problem!" />
-                <i className="fa-solid fa-magnifying-glass" />
-              </div>
-            </li>
+
             <li>
               <div className="profile">
                 <i className="fa-solid fa-user" />
