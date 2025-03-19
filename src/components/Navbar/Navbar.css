@@ -6,9 +6,6 @@
     z-index: 100;
     color: var(--font);
     background-color: #FFF0F3;
-    /* background-color: #F8F3F2; */
-    /* snow */
-
 }
 
 .nav {
@@ -21,13 +18,16 @@
     align-items: center;
 }
 
+.logo p {
+    font-size: var(--smaller-font-size);
+}
+
 .logo {
     font-family: var(--logo-font);
     font-weight: bold;
     letter-spacing: 2px;
     display: flex;
     align-items: center;
-
 }
 
 .logo span {
