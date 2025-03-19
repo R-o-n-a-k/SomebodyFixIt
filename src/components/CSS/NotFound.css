@@ -40,6 +40,7 @@
 .notFound button {
     cursor: pointer;
     background: var(--accent);
+    border: 2px solid var(--accent);
     color: var(--pure-white);
     padding: 1rem;
     border-radius: 1rem;
@@ -47,9 +48,11 @@
 }
 
 .notFound button:hover {
-    background: var(--primary);
     transition: var(--animate);
+    background: transparent;
+    color: var(--accent);
 }
+
 
 
 /* --------------------------- Responsive Section --------------------------- */

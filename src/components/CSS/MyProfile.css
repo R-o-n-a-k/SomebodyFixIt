@@ -86,10 +86,10 @@
     cursor: pointer;
     background-color: var(--primary);
     color: var(--pure-white);
+    border: 2px solid var(--primary);
 }
 
 .logout-button:hover {
-    border: 2px solid var(--primary);
     background: transparent;
     color: var(--primary);
     transition: all .3s ease-in-out;
