@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/LoginRegister.css";
+import "../components/CSS/LoginRegister.css";
 
 function LoginRegister() {
   return (

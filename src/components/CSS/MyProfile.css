@@ -1,0 +1,164 @@
+.profile-container {
+    height: 105vh;
+}
+
+.profile-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    padding: 2rem 3rem;
+    border-radius: 3rem;
+    width: 100%;
+}
+
+.profile-detail {
+    letter-spacing: .5px;
+    border: 1px solid var(--accent);
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+}
+
+.profile-label {
+    margin-bottom: 1px;
+    color: var(--accent);
+}
+
+.profile-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.profile-picture {
+    cursor: pointer;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.my-profile-name,
+.my-profile-email,
+.my-profile-bio,
+.my-profile-phone {
+    margin: 1rem auto;
+    position: relative;
+}
+
+.edit-icon,
+.edit-field-save {
+    cursor: pointer;
+    color: var(--subText);
+    position: absolute;
+    right: 2%;
+    top: 10px;
+    font-size: 1rem;
+}
+
+.edit-icon:hover {
+    color: var(--accent);
+}
+
+.edit-field input,
+.edit-field textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    background: transparent;
+}
+
+.edit-field-save:hover {
+    color: #32e875;
+    scale: 1.1;
+}
+
+.logout-button {
+    width: 20%;
+    height: 3rem;
+    margin: 4rem auto 0 auto;
+    display: block;
+    font-size: var(--normal-font-size);
+    font-weight: 600;
+    outline: none;
+    border-radius: 3rem;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--pure-white);
+}
+
+.logout-button:hover {
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    transition: all .3s ease-in-out;
+}
+
+
+/* --------------------------- Responsive Section --------------------------- */
+
+@media screen and (max-width:768px) {
+
+    .profile-picture {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .logout-button {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .profile-detail {
+        font-size: var(--small-font-size)
+    }
+
+    .profile-picture {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .edit-icon,
+    .edit-field-save {
+        right: 1%;
+        top: 0px;
+        font-size: .8rem;
+    }
+
+}
+
+@media screen and (max-width:380px) {
+    .profile-card {
+        padding: 1rem 1rem;
+    }
+
+    .profile-detail {
+        font-size: var(--tiny-font-size)
+    }
+
+    .profile-picture {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .profile-detail input::placeholder,
+    .profile-detail textarea::placeholder {
+        font-size: var(--tiny-font-size);
+    }
+
+    .logout-button {
+        width: 40%;
+        height: 2.5rem;
+        margin: 2rem auto 1rem auto;
+        font-size: var(--small-font-size);
+        font-weight: 500;
+    }
+
+    .edit-icon,
+    .edit-field-save {
+        right: 0;
+        top: 0px;
+        font-size: .8rem;
+    }
+}

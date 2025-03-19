@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/images/SomebodyFixIt.svg";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   /* ---------------------------- change background navbar --------------------------- */
@@ -22,12 +23,16 @@ function Navbar() {
         <nav className="nav">
           <div className="logo">
             <img src={logo} href="index.html" className="nav-logo" />
-            Somebody<span>FixIt</span>
+            <p>
+              Somebody<span>FixIt</span>
+            </p>
           </div>
           <ul className="nav-list">
             <li>
               <a href="">
-                <i className="fa-solid fa-house" />
+                <Link to="/">
+                  <i className="fa-solid fa-house" />
+                </Link>
               </a>
             </li>
             <li>

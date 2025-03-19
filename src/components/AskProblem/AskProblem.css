@@ -85,13 +85,18 @@ input[type="file"] {
     border-radius: 1.5rem;
     padding: .5rem 1rem;
     font-size: var(--normal-font-size);
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    height: 3rem;
+    border-radius: 3rem;
 }
 
 .ask-post-button:hover {
-    background-color: var(--accent);
-    transition: var(--animate);
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    transition: all .3s ease-in-out;
 }
 
 /* --------------------------- Responsive Section --------------------------- */
@@ -202,6 +207,7 @@ input[type="file"] {
     }
 
     .ask-post-button {
+        height: 2.5rem;
         padding: .3rem 1rem;
         font-size: var(--small-font-size);
     }
