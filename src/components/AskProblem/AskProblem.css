@@ -1,5 +1,5 @@
 .ask-problem {
-    width: auto;
+    width: 100%;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -9,6 +9,8 @@
 }
 
 .ask-input {
+    width: fit-content;
+    box-sizing: border-box;
     margin: auto 1rem;
     border: none;
     outline: none;
@@ -81,7 +83,7 @@ input[type="file"] {
     right: 2rem;
     background-color: var(--primary);
     color: var(--pure-white);
-    border: none;
+    border: 2px solid var(--primary);
     border-radius: 1.5rem;
     padding: .5rem 1rem;
     font-size: var(--normal-font-size);
@@ -93,7 +95,6 @@ input[type="file"] {
 }
 
 .ask-post-button:hover {
-    border: 2px solid var(--primary);
     background: transparent;
     color: var(--primary);
     transition: all .3s ease-in-out;
