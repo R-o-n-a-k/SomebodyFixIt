@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components/CSS/LoginRegister.css";
 
 function LoginRegister() {
+  const [formValues, setFormValues] = useState({
+    signUpName: "",
+    signUpEmail: "",
+    signUpPswd: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+  };
+
   return (
     <>
       <div className="lr-main">
@@ -9,7 +25,7 @@ function LoginRegister() {
           <input type="checkbox" className="" id="chk" aria-hidden="true" />
 
           <div className="signup">
-            <form action="">
+            <form onSubmit={handleFormSubmit}>
               <label className="form-heading" htmlFor="chk" aria-hidden="true">
                 Sign Up
               </label>
@@ -18,7 +34,9 @@ function LoginRegister() {
               </p>
               <input
                 type="text"
-                name="signup-name"
+                name="signUpName"
+                value={formValues.signupName}
+                onChange={handleInputChange}
                 placeholder="FirstName LastName"
                 id="signup-name"
                 required
@@ -26,7 +44,9 @@ function LoginRegister() {
               />
               <input
                 type="email"
-                name="signup-email"
+                name="signUpEmail"
+                value={formValues.signupEmail}
+                onChange={handleInputChange}
                 placeholder="abc@gmail.com"
                 id="signup-email"
                 required
@@ -34,7 +54,9 @@ function LoginRegister() {
               />
               <input
                 type="password"
-                name="signup-pswd"
+                name="signUpPswd"
+                value={formValues.signupPswd}
+                onChange={handleInputChange}
                 id="signup-pswd"
                 placeholder="Enter your new password"
                 required
