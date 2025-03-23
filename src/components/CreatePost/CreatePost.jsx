@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import Avatar from "../Avatar/Avatar";
-import { postData } from "./PostData";
+import { fetchProblems } from "../../utils/postProblem";
 
-function CreatePost() {
+function CreatePost({ token }) {
   const [likes, setLikes] = useState(0); // State for like count
   const [comments, setComments] = useState([]); // Array of comments
   const [newComment, setNewComment] = useState(""); // New comment input
@@ -13,21 +13,40 @@ function CreatePost() {
     setLikes(likes + 1);
   };
 
+  const [problems, setProblems] = useState([]);
+
+  useEffect(() => {
+    const loadProblems = async () => {
+      try {
+        const data = await fetchProblems();
+        setProblems(data);
+      } catch (error) {
+        console.error("Error fetching problems:", error);
+      }
+    };
+
+    loadProblems();
+  }, []);
+
   return (
     <>
       <div className="post-section">
-        {postData.map((item) => (
+        {problems.map((item) => (
           <div className="post-content">
             <div className="post-profile">
-              <Avatar name={item.name} className="ask-avatar" />
-              <label className="post-profile-name">{item.name}</label>
+              <Avatar name={item.user_name} className="ask-avatar" />
+              <label className="post-profile-name">{item.user_name}</label>
             </div>
-            <div className="post-data">{item.detail}</div>
-            {/* <div className="post-solution">
-              <div className="post-solution-box-comment"></div>
-              <div className="post-solution-upload">{item.link}</div>
-            </div> */}
-
+            <div className="post-data">{item.description}</div>
+            {item.image_url && (
+              <img
+                src={`${import.meta.env.VITE_SUPABASE_IMAGE_URL}${
+                  item.image_url
+                }`}
+                alt="post-image"
+                className="post-image"
+              />
+            )}
             <div className="post-solution">
               <div className="post-solution-likes-comments">
                 <div className="like-section" onClick={handleLike}>

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import "../components/CSS/MyProfile.css";
 import defaultProfile from "../assets/images/default-user.png";
+import { useNavigate } from "react-router-dom";
 
-export default function MyProfile() {
+export default function MyProfile({ token }) {
+  const navigate = useNavigate();
+  const userName = token.user?.user_metadata?.first_name;
+  const userEmail = token.user?.user_metadata?.email;
+
   const [profileData, setProfileData] = useState({
-    name: "Ronak Patel",
+    name: userName,
     bio: "Tech Enthusiast",
-    email: "ronakpatel@example.com",
+    email: userEmail,
     phone: "+91 912345678",
     profilePicture: defaultProfile,
   });
@@ -30,7 +35,8 @@ export default function MyProfile() {
   };
 
   const handleLogout = () => {
-    alert("Logged out successfully!");
+    sessionStorage.removeItem("token");
+    navigate("/");
   };
 
   const handleImageChange = (e) => {

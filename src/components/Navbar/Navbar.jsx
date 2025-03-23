@@ -4,7 +4,7 @@ import logo from "../../assets/images/SomebodyFixIt.svg";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ token }) {
   /* ---------------------------- change background navbar --------------------------- */
   window.addEventListener("scroll", function () {
     const header = document.querySelector(".header");
@@ -15,6 +15,11 @@ function Navbar() {
   const navigate = useNavigate();
   const handleAvatarClick = () => {
     navigate("/my-profile"); // Navigate to My Profile page
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/");
   };
 
   return (
@@ -35,11 +40,9 @@ function Navbar() {
               </div>
             </li>
             <li>
-              <a href="">
-                <Link to="/">
-                  <i className="fa-solid fa-house" />
-                </Link>
-              </a>
+              <Link to="/home">
+                <i className="fa-solid fa-house" />
+              </Link>
             </li>
 
             <li>
@@ -47,7 +50,7 @@ function Navbar() {
                 <i className="fa-solid fa-user" />
                 <div className="profile-content">
                   <a onClick={handleAvatarClick}>My Profile</a>
-                  <a href="#">Logout</a>
+                  <a onClick={handleLogout}>Logout</a>
                 </div>
               </div>
             </li>
