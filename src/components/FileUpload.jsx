@@ -1,22 +1,30 @@
 import React, { useState } from "react";
+function FileUpload({ onFileSelect }) {
+  const [filePreview, setFilePreview] = useState(null); // Preview URL
+  const [selectedFile, setSelectedFile] = useState(null); // File object
 
-function FileUpload() {
-  // uploading file
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  // Handle file selection
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]; // Get the selected file
+    if (file) {
+      setSelectedFile(file); // Save file object
+      setFilePreview(URL.createObjectURL(file)); // Create preview URL
+      onFileSelect(file); // Pass file to parent component
+    }
+  };
 
-  // deleting file
-  function handleDelete() {
-    setFile(null);
-  }
+  // Handle file deletion
+  const handleDelete = () => {
+    setSelectedFile(null); // Clear file object
+    setFilePreview(null); // Clear preview URL
+    onFileSelect(null); // Reset file in parent component
+  };
+
   return (
     <>
-      {file && (
+      {filePreview && (
         <div style={{ position: "relative", marginTop: "10px" }}>
-          <img src={file} alt="Uploaded" className="ask-uploaded-file" />
+          <img src={filePreview} alt="Uploaded" className="ask-uploaded-file" />
 
           <button onClick={handleDelete} className="ask-uploaded-file-delete">
             <i className="fa-solid fa-trash"></i>
@@ -29,12 +37,9 @@ function FileUpload() {
       <input
         id="file-upload"
         type="file"
-        onChange={handleChange}
+        onChange={handleFileChange}
         className="ask-file"
       />
-      <button type="submit" className="ask-post-button">
-        Post
-      </button>
     </>
   );
 }

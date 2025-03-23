@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
+import ToastAlert from "./components/ToastAlert";
 
 const Home = lazy(() => import("./pages/Home"));
 const MyProfile = lazy(() => import("./pages/MyProfile"));
@@ -10,14 +11,31 @@ const LoginRegister = lazy(() => import("./pages/LoginRegister"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
+  const [token, setToken] = useState(false);
+  if (token) {
+    sessionStorage.setItem("token", JSON.stringify(token));
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      let data = JSON.parse(sessionStorage.getItem("token"));
+      setToken(data);
+    }
+  }, []);
+
   return (
     <>
+      <ToastAlert />
       <Router>
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login-register" element={<LoginRegister />} />
-            <Route path="/my-profile" element={<MyProfile />} />
+            {token ? (
+              <Route path="/home" element={<Home token={token} />} />
+            ) : (
+              ""
+            )}
+            <Route path="/" element={<LoginRegister setToken={setToken} />} />
+            <Route path="/my-profile" element={<MyProfile token={token} />} />
 
             <Route path="/*" element={<NotFound />} />
           </Routes>

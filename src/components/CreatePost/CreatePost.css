@@ -30,6 +30,15 @@
     text-align: justify;
 }
 
+
+.post-image {
+    display: block;
+    margin: 1rem auto;
+    width: 50%;
+    height: 50%;
+    border-radius: 1rem;
+}
+
 .post-solution {
     margin-top: 1rem;
     max-width: auto;

@@ -3,13 +3,13 @@ import Navbar from "../components/Navbar/Navbar";
 import AskProblem from "../components/AskProblem/AskProblem";
 import CreatePost from "../components/CreatePost/CreatePost";
 
-function Home() {
+function Home({ token }) {
   return (
     <>
-      <Navbar />
+      <Navbar token={token} />
       <div className="main">
-        <AskProblem />
-        <CreatePost />
+        <AskProblem token={token} />
+        <CreatePost token={token} />
       </div>
     </>
   );

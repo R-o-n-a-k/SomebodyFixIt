@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import "../components/CSS/LoginRegister.css";
+import { useNavigate } from "react-router-dom";
 
-function LoginRegister() {
-  const [formValues, setFormValues] = useState({
-    signUpName: "",
-    signUpEmail: "",
-    signUpPswd: "",
-  });
+import {
+  initialFormValues,
+  handleInputChange,
+  handleFormSubmit,
+  handleLogin,
+} from "../utils/authFunctions"; // Path to your logic file
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValues);
-  };
+function LoginRegister({ setToken }) {
+  const navigate = useNavigate();
+  const [formValues, setFormValues] = useState(initialFormValues);
 
   return (
     <>
@@ -25,7 +20,9 @@ function LoginRegister() {
           <input type="checkbox" className="" id="chk" aria-hidden="true" />
 
           <div className="signup">
-            <form onSubmit={handleFormSubmit}>
+            <form
+              onSubmit={(e) => handleFormSubmit(e, formValues, setFormValues)}
+            >
               <label className="form-heading" htmlFor="chk" aria-hidden="true">
                 Sign Up
               </label>
@@ -35,9 +32,10 @@ function LoginRegister() {
               <input
                 type="text"
                 name="signUpName"
-                value={formValues.signupName}
-                onChange={handleInputChange}
+                value={formValues.signUpName}
+                onChange={handleInputChange(formValues, setFormValues)}
                 placeholder="FirstName LastName"
+                title="Enter your full name"
                 id="signup-name"
                 required
                 className="form-input"
@@ -45,9 +43,10 @@ function LoginRegister() {
               <input
                 type="email"
                 name="signUpEmail"
-                value={formValues.signupEmail}
-                onChange={handleInputChange}
+                value={formValues.signUpEmail}
+                onChange={handleInputChange(formValues, setFormValues)}
                 placeholder="abc@gmail.com"
+                title="Enter your email address"
                 id="signup-email"
                 required
                 className="form-input"
@@ -55,10 +54,11 @@ function LoginRegister() {
               <input
                 type="password"
                 name="signUpPswd"
-                value={formValues.signupPswd}
-                onChange={handleInputChange}
+                value={formValues.signUpPswd}
+                onChange={handleInputChange(formValues, setFormValues)}
                 id="signup-pswd"
-                placeholder="Enter your new password"
+                placeholder="Password"
+                title="Enter your password with 6 digits"
                 required
                 className="form-input"
               />
@@ -69,7 +69,11 @@ function LoginRegister() {
           </div>
 
           <div className="login">
-            <form action="">
+            <form
+              onSubmit={(e) =>
+                handleLogin(e, formValues, setFormValues, setToken, navigate)
+              }
+            >
               <label className="form-heading" htmlFor="chk" aria-hidden="true">
                 Login
               </label>
@@ -78,17 +82,23 @@ function LoginRegister() {
               </p>
               <input
                 type="email"
-                name="login-email"
-                placeholder="Enter your email"
+                name="loginEmail"
+                placeholder="Email"
                 id="login-email"
+                value={formValues.loginEmail}
+                onChange={handleInputChange(formValues, setFormValues)}
+                title="Enter your registered email"
                 required
                 className="form-input"
               />
               <input
                 type="password"
-                name="login-pswd"
+                name="loginPswd"
                 id="login-pswd"
-                placeholder="Enter your password"
+                value={formValues.loginPswd}
+                onChange={handleInputChange(formValues, setFormValues)}
+                placeholder="Password"
+                title="Enter your registered password"
                 required
                 className="form-input"
               />
