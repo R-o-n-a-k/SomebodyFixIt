@@ -57,9 +57,11 @@ function LoginRegister({ setToken }) {
                 value={formValues.signUpPswd}
                 onChange={handleInputChange(formValues, setFormValues)}
                 id="signup-pswd"
-                placeholder="Password"
+                placeholder="Password with 6 digits"
                 title="Enter your password with 6 digits"
                 required
+                minlength="6"
+                maxlength="6"
                 className="form-input"
               />
               <button className="form-buton signup-btn" name="signup-btn">
@@ -98,6 +100,8 @@ function LoginRegister({ setToken }) {
                 value={formValues.loginPswd}
                 onChange={handleInputChange(formValues, setFormValues)}
                 placeholder="Password"
+                minlength="6"
+                maxlength="6"
                 title="Enter your registered password"
                 required
                 className="form-input"
