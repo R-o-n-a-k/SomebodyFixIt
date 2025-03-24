@@ -35,8 +35,11 @@ export default function MyProfile({ token }) {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    navigate("/");
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      sessionStorage.removeItem("token");
+      navigate("/");
+    }
   };
 
   const handleImageChange = (e) => {
