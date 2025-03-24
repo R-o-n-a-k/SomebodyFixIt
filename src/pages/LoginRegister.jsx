@@ -49,10 +49,7 @@ function LoginRegister({ setToken }) {
                 <div className="lr-slogan">
                   <p> Got any problem or stuck with something?</p>
                   <br />
-
-                  <span>Just Ask here!</span>
-
-                  {/* <p>Someone will definitely fix it!</p> */}
+                  <span>Just Ask here! 😉</span>
                 </div>
                 <button onClick={handleFlip} className="form-buton lr-flip-btn">
                   <i class="fa-solid fa-arrow-right" />

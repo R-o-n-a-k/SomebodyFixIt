@@ -1,8 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/images/SomebodyFixIt.svg";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar({ token }) {
   /* ---------------------------- change background navbar --------------------------- */
@@ -11,16 +10,7 @@ function Navbar({ token }) {
     if (this.scrollY >= 10) header.classList.add("scroll__header");
     else header.classList.remove("scroll__header");
   });
-
-  const navigate = useNavigate();
-  const handleAvatarClick = () => {
-    navigate("/my-profile"); // Navigate to My Profile page
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    navigate("/");
-  };
+  const location = useLocation();
 
   return (
     <>
@@ -33,26 +23,28 @@ function Navbar({ token }) {
             </p>
           </div>
           <ul className="nav-list">
-            <li>
+            <li title="Search your problems">
               <div className="search">
                 <input name="" id="" placeholder="Search your problem!" />
                 <i className="fa-solid fa-magnifying-glass" />
               </div>
             </li>
-            <li>
+            <li
+              title="Home"
+              className={location.pathname === "/home" ? "active" : ""}
+            >
               <Link to="/home">
                 <i className="fa-solid fa-house" />
               </Link>
             </li>
 
-            <li>
-              <div className="profile">
-                <i className="fa-solid fa-user" />
-                <div className="profile-content">
-                  <a onClick={handleAvatarClick}>My Profile</a>
-                  <a onClick={handleLogout}>Logout</a>
-                </div>
-              </div>
+            <li
+              title="My Profile"
+              className={location.pathname === "/my-profile" ? "active" : ""}
+            >
+              <Link to="/my-profile">
+                <i class="fa-solid fa-circle-user"></i>
+              </Link>
             </li>
           </ul>
         </nav>
