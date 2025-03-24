@@ -5,8 +5,14 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import FileUpload from "../FileUpload";
 import { handlePostSubmit } from "../../utils/postProblem";
+import { useNavigate } from "react-router-dom";
 
 function AskProblem({ token }) {
+  const navigate = useNavigate();
+  const handleAvatarClick = () => {
+    navigate("/my-profile"); // Navigate to My Profile page
+  };
+
   // modal open/close
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
@@ -23,7 +29,9 @@ function AskProblem({ token }) {
   return (
     <>
       <div className="ask-problem">
-        <Avatar name={userName} className="ask-avatar" />
+        <div className="ask-problem-avatar" onClick={handleAvatarClick}>
+          <Avatar name={userName} className="ask-avatar" />
+        </div>
         <div target="_blank">
           <input
             onClick={onOpenModal}

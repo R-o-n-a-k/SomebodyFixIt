@@ -1,26 +1,165 @@
 .lr-main {
     background-image: url("../../assets/images/login-bg.svg");
     background-repeat: no-repeat;
+    /* background-color: var(--primary); */
     height: 100vh;
     width: 100%;
     display: grid;
     place-content: center;
 }
 
-.lr-container {
-    width: 350px;
-    height: 500px;
-    background: var(--background);
-    overflow: hidden;
-    border-radius: 3rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+.lr-main-container {
+    display: flex;
+    justify-content: center;
 }
 
+.lr-card {
+    perspective: 1000px;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.lr-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.lr-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+
+.lr-container,
+.lr-intro {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 3rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    backface-visibility: hidden;
+    background-color: var(--background);
+}
+
+.lr-intro {
+    padding: 2rem;
+}
+
+.lr-container {
+    transform: rotateY(180deg);
+}
+
+
+.lr-logo {
+    font-family: var(--logo-font);
+    align-items: center;
+    text-align: center;
+    margin: 2rem auto;
+
+}
+
+.lr-logo img {
+    width: 7rem;
+    height: 7rem;
+    cursor: pointer;
+    margin-bottom: .5rem;
+    /* animation: bouncePulse 3s infinite ease-in-out; */
+}
+
+/* @keyframes bouncePulse {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: scale(1.1) translateY(-10px);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(0.9) translateY(5px);
+        opacity: 0.8;
+    }
+
+    75% {
+        transform: scale(1.05) translateY(-5px);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+} */
+
+.lr-logo p {
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.lr-logo span {
+    color: var(--primary);
+}
+
+.lr-slogan {
+    font-size: var(--normal-font-size);
+    line-height: 1.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.lr-slogan span {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--accent);
+    animation: shiver .8s infinite ease-in-out;
+}
+
+@keyframes shiver {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.lr-flip-btn {
+    color: var(--pure-white);
+    background-color: var(--primary);
+}
+
+.lr-flip-btn:hover {
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    transition: all .3s ease-in-out;
+}
+
+
+/* ----------------common form css--------------------- */
 #chk {
     display: none;
 }
-
-/* ----------------common form css--------------------- */
 
 .form-heading {
     color: var(--primary);
@@ -176,9 +315,23 @@
 
 @media screen and (max-width:380px) {
 
-    .lr-container {
+    .lr-card {
         width: 300px;
         height: 400px;
+    }
+
+    .lr-logo img {
+        width: 5rem;
+        height: 5rem;
+
+    }
+
+    .lr-logo p {
+        font-size: var(--normal-font-size);
+    }
+
+    .lr-slogan {
+        font-size: var(--smaller-font-size);
     }
 
     .form-heading {

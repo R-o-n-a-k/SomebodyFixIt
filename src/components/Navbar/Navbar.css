@@ -155,11 +155,16 @@
         font-size: var(--smaller-font-size);
     }
 
+    .logo p {
+        font-size: var(--tiny-font-size);
+    }
+
     .nav-list {
-        column-gap: .5rem;
+        column-gap: 1rem;
     }
 
     .search input {
+        font-size: var(--tiny-font-size);
         width: 3rem;
     }
 }

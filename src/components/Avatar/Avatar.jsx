@@ -1,14 +1,7 @@
 import React from "react";
 import "./Avatar.css";
-import { useNavigate } from "react-router-dom";
 
 const Avatar = ({ name }) => {
-  const navigate = useNavigate();
-
-  const handleAvatarClick = () => {
-    navigate("/my-profile"); // Navigate to My Profile page
-  };
-
   const getInitials = (name) => {
     if (!name) {
       return "NA"; // Return default initials if name is null or undefined
@@ -18,11 +11,7 @@ const Avatar = ({ name }) => {
     return initials.slice(0, 2).join("");
   };
 
-  return (
-    <div className="avatar" onClick={handleAvatarClick}>
-      {getInitials(name)}
-    </div>
-  );
+  return <div className="avatar">{getInitials(name)}</div>;
 };
 
 export default Avatar;
