@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/images/somebodyfixit.svg";
+import logo from "../../assets/images/navbarLogo.svg";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar({ token }) {
