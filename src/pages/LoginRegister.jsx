@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/CSS/LoginRegister.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/lrLogo.gif";
+import logo from "../assets/images/somebodyfixit.gif";
 
 import {
   initialFormValues,
