@@ -37,6 +37,28 @@
     border: 5px solid var(--accent);
 }
 
+.profile-picture-delete-btn {
+    background: transparent;
+    color: red;
+    position: absolute;
+    bottom: -10px;
+    left: 55%;
+    transition: var(--animate);
+}
+
+.profile-picture-delete-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.profile-picture-delete-btn:hover {
+    color: darkred;
+}
+
+.profile-picture-delete-btn:focus {
+    color: darkred;
+}
+
 .my-profile-name,
 .my-profile-email,
 .my-profile-bio,
