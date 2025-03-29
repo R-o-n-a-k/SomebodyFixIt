@@ -45,7 +45,7 @@ function Navbar({ token }) {
               className={location.pathname === "/my-profile" ? "active" : ""}
             >
               <Link to="/my-profile">
-                <i class="fa-solid fa-circle-user"></i>
+                <i className="fa-solid fa-circle-user"></i>
               </Link>
             </li>
           </ul>
