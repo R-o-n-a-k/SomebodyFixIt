@@ -52,7 +52,7 @@ function LoginRegister({ setToken }) {
                   <span data-text="">😉 Just Ask here! 👇</span>
                 </div>
                 <button onClick={handleFlip} className="form-buton lr-flip-btn">
-                  <i class="fa-solid fa-arrow-right" />
+                  <i className="fa-solid fa-arrow-right" />
                 </button>
               </div>
 

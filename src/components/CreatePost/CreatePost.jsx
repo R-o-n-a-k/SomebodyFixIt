@@ -31,8 +31,8 @@ function CreatePost({ token }) {
   return (
     <>
       <div className="post-section">
-        {problems.map((item) => (
-          <div className="post-content">
+        {problems.map((item, index) => (
+          <div className="post-content" key={index}>
             <div className="post-profile">
               <Avatar name={item.user_name} className="ask-avatar" />
               <label className="post-profile-name">{item.user_name}</label>

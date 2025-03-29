@@ -134,7 +134,7 @@ export default function MyProfile({ token }) {
                 onClick={handleDeleteImage}
                 disabled={profileImage === defaultProfile}
               >
-                <i class="fa-solid fa-trash" />
+                <i className="fa-solid fa-trash" />
               </button>
             </div>
 
