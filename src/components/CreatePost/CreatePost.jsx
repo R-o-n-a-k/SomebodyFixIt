@@ -3,6 +3,8 @@ import "./CreatePost.css";
 import Avatar from "../Avatar/Avatar";
 import { fetchProblems } from "../../utils/postProblem";
 
+export let updateProblem = () => {};
+
 function CreatePost({ token }) {
   const [likes, setLikes] = useState(0); // State for like count
   const [comments, setComments] = useState([]); // Array of comments
@@ -14,7 +16,7 @@ function CreatePost({ token }) {
   };
 
   const [problems, setProblems] = useState([]);
-
+  updateProblem = setProblems;
   useEffect(() => {
     const loadProblems = async () => {
       try {

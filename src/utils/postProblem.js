@@ -41,6 +41,7 @@ export const handlePostSubmit = async (e,{
   onCloseModal,
   setProblemDescription,
   setSelectedFile,
+  updateProblem
 }) => {
     e.preventDefault();
   try {
@@ -57,6 +58,9 @@ export const handlePostSubmit = async (e,{
       imageUrl,
       userName,
     });
+
+    const updatedProblems = await fetchProblems(); // Fetch new problems
+    updateProblem(updatedProblems);
     toast.success("Problem posted successfully!");
     setProblemDescription("");
     setSelectedFile(null);

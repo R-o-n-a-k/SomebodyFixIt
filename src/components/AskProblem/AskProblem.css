@@ -173,8 +173,7 @@ input[type="file"] {
     }
 
     .post-data {
-        font-size: var(--small-font-size);
-
+        font-size: var(--smaller-font-size);
     }
 
 }
