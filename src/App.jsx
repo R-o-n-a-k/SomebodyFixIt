@@ -25,6 +25,10 @@ function App() {
 
   return (
     <>
+      <h1 className="visually-hidden">
+        SomebodyFixIt - Post Problems & Get Solutions
+      </h1>
+      <h2 className="visually-hidden">Explore and have fun!</h2>
       <ToastAlert />
       <Router>
         <Suspense fallback={<Loader />}>

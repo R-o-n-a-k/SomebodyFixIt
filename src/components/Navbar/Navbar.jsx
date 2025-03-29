@@ -17,7 +17,9 @@ function Navbar({ token }) {
       <header className="header">
         <nav className="nav">
           <div className="logo">
-            <img src={logo} href="index.html" className="nav-logo" />
+            <Link to="/home">
+              <img src={logo} className="nav-logo" />
+            </Link>
             <p>
               Somebody<span>FixIt</span>
             </p>
