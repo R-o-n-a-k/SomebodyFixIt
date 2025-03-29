@@ -6,6 +6,7 @@ import "react-responsive-modal/styles.css";
 import FileUpload from "../FileUpload";
 import { handlePostSubmit } from "../../utils/postProblem";
 import { useNavigate } from "react-router-dom";
+import { updateProblem } from "../CreatePost/CreatePost";
 
 function AskProblem({ token }) {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ function AskProblem({ token }) {
                       onCloseModal,
                       setProblemDescription,
                       setSelectedFile,
+                      updateProblem,
                     })
                   }
                   type="submit"
