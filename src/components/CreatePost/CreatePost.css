@@ -65,11 +65,9 @@
 
 .comment-icon {
     color: var(--secondary);
-    /* Blue on hover for comment */
 }
 
 .like-icon:hover,
 .comment-icon:hover {
-    color: var(--accent);
-    /* Blue on hover for comment */
+    scale: 1.05;
 }
