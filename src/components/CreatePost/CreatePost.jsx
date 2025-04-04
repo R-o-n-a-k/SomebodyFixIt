@@ -2,17 +2,34 @@ import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import Avatar from "../Avatar/Avatar";
 import { fetchProblems } from "../../utils/postProblem";
+import {
+  hasUserLiked,
+  countLikes,
+  getUserId,
+  toggleLike,
+} from "../../utils/likes";
 
 export let updateProblem = () => {};
 
 function CreatePost({ token }) {
-  const [likes, setLikes] = useState(0); // State for like count
   const [comments, setComments] = useState([]); // Array of comments
   const [newComment, setNewComment] = useState(""); // New comment input
+  const [likeCounts, setLikeCounts] = useState({});
 
-  // Function to handle "Like" button click
-  const handleLike = () => {
-    setLikes(likes + 1);
+  const [likedByMe, setLikedByMe] = useState({});
+
+  const handleLike = async (postId) => {
+    const userId = await getUserId(token?.user?.id); // UUID → int8
+    if (!userId) return;
+    await toggleLike(postId, userId);
+    const updatedCount = await countLikes(postId);
+    setLikeCounts((prev) => ({ ...prev, [postId]: updatedCount }));
+
+    // Toggle likedByMe
+    setLikedByMe((prev) => ({
+      ...prev,
+      [postId]: !prev[postId],
+    }));
   };
 
   const [problems, setProblems] = useState([]);
@@ -22,8 +39,23 @@ function CreatePost({ token }) {
       try {
         const data = await fetchProblems();
         setProblems(data);
+
+        const uid = token?.user?.id;
+        const userId = await getUserId(uid);
+
+        // Count likes for all problems
+        const counts = {};
+        const likedStatus = {};
+        for (let item of data) {
+          const count = await countLikes(item.id);
+          counts[item.id] = count;
+          const hasLiked = await hasUserLiked(item.id, userId);
+          likedStatus[item.id] = hasLiked;
+        }
+        setLikeCounts(counts);
+        setLikedByMe(likedStatus);
       } catch (error) {
-        console.error("Error fetching problems:", error);
+        console.error("Error fetching post:", error);
       }
     };
 
@@ -51,9 +83,16 @@ function CreatePost({ token }) {
             )}
             <div className="post-solution">
               <div className="post-solution-likes-comments">
-                <div className="like-section" onClick={handleLike}>
-                  <i className="fa-regular fa-heart like-icon" />
-                  <span>{likes}</span>
+                <div
+                  className="like-section"
+                  onClick={() => handleLike(item.id)}
+                >
+                  <i
+                    className={`fa-heart like-icon ${
+                      likedByMe[item.id] ? "fa-solid" : "fa-regular"
+                    }`}
+                  />
+                  <span>{likeCounts[item.id] || 0}</span>
                 </div>
                 <div className="comment-section">
                   <i className="fa-solid fa-comments comment-icon" />
