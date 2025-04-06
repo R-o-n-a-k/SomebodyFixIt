@@ -10,19 +10,20 @@ export const uploadImage = async (file) => {
     .upload(`${file.name}`, file);
 
   if (error) throw error;
-  return data.path; // Return the file path
+  return data.path;
 };
 
 // Insert a problem into Supabase table
-export const insertProblem = async ({ description, imageUrl, userName }) => {
+export const insertProblem = async ({ description, imageUrl, userName,userId }) => {
+  console.log("INSERTING:", { description, imageUrl, userName, userId });
   const { error } = await supabase.from("problems").insert([
     {
       description,
       image_url: imageUrl,
       user_name: userName,
+      user_id: userId,
     },
   ]);
-
   if (error) throw error;
 };
 
@@ -30,7 +31,7 @@ export const insertProblem = async ({ description, imageUrl, userName }) => {
 export const fetchProblems = async () => {
   const { data, error } = await supabase.from("problems").select("*").order("created_at", { ascending: false });
   if (error) throw error;
-  return data; // Return fetched problems
+  return data; 
 };
 
 // Handle posting a problem
@@ -38,6 +39,7 @@ export const handlePostSubmit = async (e,{
   problemDescription,
   selectedFile,
   userName,
+  userId,
   onCloseModal,
   setProblemDescription,
   setSelectedFile,
@@ -57,6 +59,7 @@ export const handlePostSubmit = async (e,{
       description: problemDescription,
       imageUrl,
       userName,
+      userId,
     });
 
     const updatedProblems = await fetchProblems(); // Fetch new problems
@@ -68,4 +71,9 @@ export const handlePostSubmit = async (e,{
   } catch (error) {
     toast.error(`Failed to post problem: ${error.message}`);
   }
+};
+
+export const deleteProblemById = async (postId) => {
+  const { error } = await supabase.from("problems").delete().eq("id", postId);
+  if (error) throw error;
 };

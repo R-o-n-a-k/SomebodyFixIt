@@ -7,7 +7,7 @@ function ToastAlert() {
     <>
       <ToastContainer
         position="top-center"
-        autoClose={2000}
+        autoClose={1000}
         limit={1}
         hideProgressBar={false}
         newestOnTop={false}
@@ -17,6 +17,21 @@ function ToastAlert() {
         theme="light"
         transition:Bounce
       />
+      <style>
+        {`
+          @media (max-width: 480px) {
+            .Toastify__toast {
+              font-size: .7rem;
+              height: .5rem;
+              width: 85%;
+            }
+            .Toastify__toast-icon {
+              width: 1rem;
+              height: 1rem;
+            }
+          }
+        `}
+      </style>
     </>
   );
 }

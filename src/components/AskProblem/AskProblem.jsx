@@ -7,11 +7,12 @@ import FileUpload from "../FileUpload";
 import { handlePostSubmit } from "../../utils/postProblem";
 import { useNavigate } from "react-router-dom";
 import { updateProblem } from "../CreatePost/CreatePost";
+import { getUserId } from "../../utils/likes";
 
 function AskProblem({ token }) {
   const navigate = useNavigate();
   const handleAvatarClick = () => {
-    navigate("/my-profile"); // Navigate to My Profile page
+    navigate("/my-profile");
   };
 
   // modal open/close
@@ -20,8 +21,8 @@ function AskProblem({ token }) {
   const onCloseModal = () => setOpen(false);
 
   const userName = token.user?.user_metadata?.first_name;
-  const [problemDescription, setProblemDescription] = useState(""); // For storing problem text
-  const [selectedFile, setSelectedFile] = useState(null); // For storing the uploaded file
+  const [problemDescription, setProblemDescription] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileUpload = (file) => {
     setSelectedFile(file); // FileUpload component should pass the selected file here
@@ -54,7 +55,9 @@ function AskProblem({ token }) {
                 />
                 <FileUpload onFileSelect={handleFileUpload} />
                 <button
-                  onClick={(e) =>
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    const userId = await getUserId(token?.user?.id);
                     handlePostSubmit(e, {
                       problemDescription,
                       selectedFile,
@@ -63,8 +66,9 @@ function AskProblem({ token }) {
                       setProblemDescription,
                       setSelectedFile,
                       updateProblem,
-                    })
-                  }
+                      userId,
+                    });
+                  }}
                   type="submit"
                   className="ask-post-button"
                 >

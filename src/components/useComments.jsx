@@ -15,6 +15,17 @@ export default function useComments(token) {
   const [comments, setComments] = useState({});
   const [newComment, setNewComment] = useState({});
 
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const id = await getUserId(token?.user?.id);
+      setCurrentUserId(id);
+    };
+
+    if (token?.user?.id) {
+      fetchUserId();
+    }
+  }, [token]);
+
   const initializeComments = async (posts) => {
     const commentMap = {};
     for (let item of posts) {
@@ -26,8 +37,8 @@ export default function useComments(token) {
       token.user?.user_metadata?.first_name || "Default Profile"
     );
 
-    const userId = await getUserId(token?.user?.id);
-    setCurrentUserId(userId);
+    // const userId = await getUserId(token?.user?.id);
+    // setCurrentUserId(userId);
   };
 
   const handleCommentClick = async (postId) => {
