@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import Avatar from "../Avatar/Avatar";
-import { fetchProblems } from "../../utils/postProblem";
+import { fetchProblems, deleteProblemById } from "../../utils/postProblem";
 import useLikes from "../useLikes";
 import useComments from "../useComments";
+import { toast } from "react-toastify";
 
 export let updateProblem = () => {};
 
@@ -43,11 +44,35 @@ function CreatePost({ token }) {
     loadProblems();
   }, []);
 
+  const handleDeletePost = async (postId) => {
+    const confirmPostDelete = window.confirm(
+      "Are you sure you want to delete this comment?"
+    );
+    if (confirmPostDelete) {
+      try {
+        await deleteProblemById(postId);
+        setProblems((prev) => prev.filter((p) => p.id !== postId));
+        toast.success("Post deleted sucessfully");
+      } catch (error) {
+        toast.error("Failed to delete post");
+        console.error("Delete error:", error);
+      }
+    }
+  };
+
   return (
     <>
       <div className="post-section">
         {problems.map((item, index) => (
           <div className="post-content" key={index}>
+            {item.user_id === currentUserId && (
+              <button
+                className="post-delete-btn"
+                onClick={() => handleDeletePost(item.id)}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            )}
             <div className="post-profile">
               <Avatar name={item.user_name} className="ask-avatar" />
               <label className="post-profile-name">{item.user_name}</label>
