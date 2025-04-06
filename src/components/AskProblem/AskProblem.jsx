@@ -46,16 +46,8 @@ function AskProblem({ token }) {
               <h4>Ask Problem</h4>
               <hr />
               <div className="ask-content">
-                <textarea
-                  className="ask-desc"
-                  rows="4"
-                  value={problemDescription}
-                  onChange={(e) => setProblemDescription(e.target.value)}
-                  placeholder="Explain your problem..."
-                />
-                <FileUpload onFileSelect={handleFileUpload} />
-                <button
-                  onClick={async (e) => {
+                <form
+                  onSubmit={async (e) => {
                     e.preventDefault();
                     const userId = await getUserId(token?.user?.id);
                     handlePostSubmit(e, {
@@ -69,11 +61,20 @@ function AskProblem({ token }) {
                       userId,
                     });
                   }}
-                  type="submit"
-                  className="ask-post-button"
                 >
-                  Post
-                </button>
+                  <textarea
+                    className="ask-desc"
+                    rows="4"
+                    value={problemDescription}
+                    onChange={(e) => setProblemDescription(e.target.value)}
+                    placeholder="Explain your problem..."
+                    required
+                  />
+                  <FileUpload onFileSelect={handleFileUpload} />
+                  <button type="submit" className="ask-post-button">
+                    Post
+                  </button>
+                </form>
               </div>
             </div>
           </Modal>
