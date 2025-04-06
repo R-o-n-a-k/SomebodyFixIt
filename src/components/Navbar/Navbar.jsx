@@ -17,9 +17,11 @@ function Navbar({ token }) {
       <header className="header">
         <nav className="nav">
           <div className="logo">
-            <Link to="/home">
-              <img src={logo} className="nav-logo" />
-            </Link>
+            <img
+              src={logo}
+              className="nav-logo"
+              onClick={() => (window.location.href = "/home")}
+            />
             <p>
               Somebody<span>FixIt</span>
             </p>
