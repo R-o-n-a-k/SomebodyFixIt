@@ -35,6 +35,7 @@
 }
 
 .logo img {
+    cursor: pointer;
     height: 5vh;
 }
 

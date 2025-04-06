@@ -8,6 +8,12 @@
     cursor: pointer;
 }
 
+.ask-problem-avatar:hover {
+    transform: scale(1.1);
+    transition: var(--animate);
+    cursor: pointer;
+}
+
 .ask-input {
     width: fit-content;
     box-sizing: border-box;

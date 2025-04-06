@@ -2,58 +2,39 @@ import React, { useState, useEffect } from "react";
 import "./CreatePost.css";
 import Avatar from "../Avatar/Avatar";
 import { fetchProblems } from "../../utils/postProblem";
-import {
-  hasUserLiked,
-  countLikes,
-  getUserId,
-  toggleLike,
-} from "../../utils/likes";
+import useLikes from "../useLikes";
+import useComments from "../useComments";
 
 export let updateProblem = () => {};
 
 function CreatePost({ token }) {
-  const [comments, setComments] = useState([]); // Array of comments
-  const [newComment, setNewComment] = useState(""); // New comment input
-  const [likeCounts, setLikeCounts] = useState({});
-
-  const [likedByMe, setLikedByMe] = useState({});
-
-  const handleLike = async (postId) => {
-    const userId = await getUserId(token?.user?.id); // UUID → int8
-    if (!userId) return;
-    await toggleLike(postId, userId);
-    const updatedCount = await countLikes(postId);
-    setLikeCounts((prev) => ({ ...prev, [postId]: updatedCount }));
-
-    // Toggle likedByMe
-    setLikedByMe((prev) => ({
-      ...prev,
-      [postId]: !prev[postId],
-    }));
-  };
-
   const [problems, setProblems] = useState([]);
   updateProblem = setProblems;
+
+  const { likeCounts, likedByMe, handleLike, initializeLikes } =
+    useLikes(token);
+
+  const {
+    loggedInUserName,
+    currentUserId,
+    showComments,
+    comments,
+    newComment,
+    handleCommentClick,
+    handleCommentSubmit,
+    handleDeleteComment,
+    handleUpvoteComment,
+    setNewComment,
+    initializeComments,
+  } = useComments(token);
+
   useEffect(() => {
     const loadProblems = async () => {
       try {
         const data = await fetchProblems();
         setProblems(data);
-
-        const uid = token?.user?.id;
-        const userId = await getUserId(uid);
-
-        // Count likes for all problems
-        const counts = {};
-        const likedStatus = {};
-        for (let item of data) {
-          const count = await countLikes(item.id);
-          counts[item.id] = count;
-          const hasLiked = await hasUserLiked(item.id, userId);
-          likedStatus[item.id] = hasLiked;
-        }
-        setLikeCounts(counts);
-        setLikedByMe(likedStatus);
+        await initializeLikes(data);
+        await initializeComments(data);
       } catch (error) {
         console.error("Error fetching post:", error);
       }
@@ -94,10 +75,138 @@ function CreatePost({ token }) {
                   />
                   <span>{likeCounts[item.id] || 0}</span>
                 </div>
-                <div className="comment-section">
+                <div
+                  className="comment-section"
+                  onClick={() => handleCommentClick(item.id)}
+                >
                   <i className="fa-solid fa-comments comment-icon" />
-                  <span>{comments.length}</span>
+                  <span>{comments[item.id]?.length || 0}</span>
                 </div>
+              </div>
+              <div className="comment-wrapper">
+                {showComments[item.id] && (
+                  <>
+                    <div className="comment-box">
+                      <Avatar
+                        name={loggedInUserName}
+                        className="comment-avatar"
+                      />
+                      <textarea
+                        value={newComment[item.id] || ""}
+                        onChange={(e) =>
+                          setNewComment((prev) => ({
+                            ...prev,
+                            [item.id]: e.target.value,
+                          }))
+                        }
+                        placeholder="Write a comment..."
+                        className="comment-textarea"
+                      />
+                      <button
+                        className="comment-submit"
+                        onClick={() => handleCommentSubmit(item.id)}
+                      >
+                        <i className="fa-solid fa-arrow-right" />
+                      </button>
+                    </div>
+
+                    <div className="comment-list">
+                      {(() => {
+                        const allComments = comments[item.id] || [];
+                        if (allComments.length === 0) return null;
+
+                        const topComment = allComments.reduce(
+                          (max, c) => (c.upvotes > max.upvotes ? c : max),
+                          allComments[0]
+                        );
+
+                        const restComments = allComments.filter(
+                          (c) => c.id !== topComment.id
+                        );
+
+                        return (
+                          <>
+                            <div
+                              key={topComment.id}
+                              className="single-comment pinned-comment"
+                            >
+                              <Avatar
+                                name={topComment.user_name}
+                                className="comment-avatar"
+                              />
+                              <span>{topComment.content}</span>
+                              <div className="comment-actions">
+                                <span>{topComment.upvotes || 0}</span>
+                                <button
+                                  className="upvote-btn"
+                                  onClick={() =>
+                                    handleUpvoteComment(
+                                      topComment.id,
+                                      item.id,
+                                      topComment.upvotes || 0
+                                    )
+                                  }
+                                >
+                                  <i className="fa-solid fa-thumbs-up" />
+                                </button>
+
+                                {topComment.user_id === currentUserId && (
+                                  <button
+                                    className="delete-btn"
+                                    onClick={() =>
+                                      handleDeleteComment(
+                                        topComment.id,
+                                        item.id
+                                      )
+                                    }
+                                  >
+                                    <i className="fa-solid fa-trash" />
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+
+                            {restComments.map((comment) => (
+                              <div key={comment.id} className="single-comment">
+                                <Avatar
+                                  name={comment.user_name}
+                                  className="comment-avatar"
+                                />
+                                <span>{comment.content}</span>
+                                <div className="comment-actions">
+                                  <span>{comment.upvotes || 0}</span>
+                                  <button
+                                    className="upvote-btn"
+                                    onClick={() =>
+                                      handleUpvoteComment(
+                                        comment.id,
+                                        item.id,
+                                        comment.upvotes || 0
+                                      )
+                                    }
+                                  >
+                                    <i className="fa-solid fa-thumbs-up" />
+                                  </button>
+
+                                  {comment.user_id === currentUserId && (
+                                    <button
+                                      className="delete-btn"
+                                      onClick={() =>
+                                        handleDeleteComment(comment.id, item.id)
+                                      }
+                                    >
+                                      <i className="fa-solid fa-trash" />
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </>
+                        );
+                      })()}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

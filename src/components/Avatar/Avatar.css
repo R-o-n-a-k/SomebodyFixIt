@@ -11,10 +11,26 @@
     border-radius: 50%;
     text-transform: uppercase;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+
 }
 
-.avatar:hover {
-    scale: 1.1;
-    transition: var(--animate);
+
+/* --------------------------- Responsive Section --------------------------- */
+
+
+
+@media screen and (max-width:576px) {
+    .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: var(--small-font-size);
+    }
+}
+
+@media screen and (max-width:380px) {
+    .avatar {
+        width: 2rem;
+        height: 2rem;
+        font-size: var(--smaller-font-size);
+    }
 }

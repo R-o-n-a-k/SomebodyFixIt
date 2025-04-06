@@ -14,7 +14,7 @@
     height: auto;
     box-shadow: var(--box-shadow);
     padding: 3rem 2rem 3rem;
-    border-radius: 1rem;
+    border-radius: 3rem;
 }
 
 .notFound h1 {
@@ -43,7 +43,7 @@
     border: 2px solid var(--accent);
     color: var(--pure-white);
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 3rem;
     box-shadow: var(--box-shadow);
 }
 
