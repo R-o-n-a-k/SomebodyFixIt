@@ -46,7 +46,7 @@ function CreatePost({ token }) {
 
   const handleDeletePost = async (postId) => {
     const confirmPostDelete = window.confirm(
-      "Are you sure you want to delete this comment?"
+      "Are you sure you want to delete this post?"
     );
     if (confirmPostDelete) {
       try {
