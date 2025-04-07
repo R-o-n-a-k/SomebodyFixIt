@@ -28,6 +28,7 @@ function CreatePost({ token }) {
     setNewComment,
     initializeComments,
     activeCommentIcon,
+    upvotedComments,
   } = useComments(token);
 
   useEffect(() => {
@@ -169,9 +170,8 @@ function CreatePost({ token }) {
                                   name={topComment.user_name}
                                   className="comment-avatar"
                                 />
+                                <i className="fa-solid fa-thumbtack pin-icon"></i>
                                 <span className="comment-text">
-                                  <i className="fa-solid fa-thumbtack pin-icon"></i>
-                                  {/* <span className="pin-icon">📌</span> */}
                                   {topComment.content}
                                 </span>
                               </div>
@@ -187,7 +187,14 @@ function CreatePost({ token }) {
                                     )
                                   }
                                 >
-                                  <i className="fa-solid fa-thumbs-up" />
+                                  <i
+                                    className={
+                                      upvotedComments[topComment.id]
+                                        ? "fa-solid fa-thumbs-up"
+                                        : "fa-regular fa-thumbs-up"
+                                    }
+                                  />
+                                  {/* <i className="fa-solid fa-thumbs-up" /> */}
                                 </button>
 
                                 {topComment.user_id === currentUserId && (
@@ -229,7 +236,14 @@ function CreatePost({ token }) {
                                       )
                                     }
                                   >
-                                    <i className="fa-solid fa-thumbs-up" />
+                                    <i
+                                      className={
+                                        upvotedComments[comment.id]
+                                          ? "fa-solid fa-thumbs-up"
+                                          : "fa-regular fa-thumbs-up"
+                                      }
+                                    />
+                                    {/* <i className="fa-solid fa-thumbs-up" /> */}
                                   </button>
 
                                   {comment.user_id === currentUserId && (

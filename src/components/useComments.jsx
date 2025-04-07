@@ -4,6 +4,7 @@ import {
   addComment,
   deleteComment,
   upvoteComment,
+  hasUserUpvotedComment,
 } from "../utils/comments";
 import { getUserId } from "../utils/likes";
 
@@ -15,6 +16,8 @@ export default function useComments(token) {
   const [newComment, setNewComment] = useState({});
 
   const [activeCommentIcon, setActiveCommentICon] = useState(null);
+
+  const [upvotedComments, setUpvotedComments] = useState({});
 
   useEffect(() => {
     const fetchUserId = async () => {
@@ -29,11 +32,23 @@ export default function useComments(token) {
 
   const initializeComments = async (posts) => {
     const commentMap = {};
+    const upvotedStatus = {};
+
     for (let item of posts) {
       const postComments = await fetchComments(item.id);
       commentMap[item.id] = postComments;
+
+      for (let comment of postComments) {
+        const userId = await getUserId(token?.user?.id);
+        if (!userId) continue;
+
+        const hasUpvoted = await hasUserUpvotedComment(comment.id, userId);
+        upvotedStatus[comment.id] = hasUpvoted;
+      }
     }
     setComments(commentMap);
+    setUpvotedComments(upvotedStatus);
+
     setLoggedInUserName(
       token.user?.user_metadata?.first_name || "Default Profile"
     );
@@ -100,6 +115,12 @@ export default function useComments(token) {
         c.id === commentId ? updated : c
       );
       setComments((prev) => ({ ...prev, [postId]: updatedList }));
+
+      // Toggle upvoted state
+      setUpvotedComments((prev) => ({
+        ...prev,
+        [commentId]: !prev[commentId],
+      }));
     } else {
       alert("You’ve already upvoted this comment!");
     }
@@ -118,5 +139,6 @@ export default function useComments(token) {
     handleUpvoteComment,
     initializeComments,
     activeCommentIcon,
+    upvotedComments,
   };
 }

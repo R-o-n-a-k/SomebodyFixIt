@@ -67,20 +67,6 @@
     position: relative;
 }
 
-.edit-icon,
-.edit-field-save {
-    cursor: pointer;
-    color: var(--subText);
-    position: absolute;
-    right: 2%;
-    top: 10px;
-    font-size: 1rem;
-}
-
-.edit-icon:hover {
-    color: var(--accent);
-}
-
 .edit-field input,
 .edit-field textarea {
     border: none;
@@ -90,9 +76,40 @@
     background: transparent;
 }
 
-.edit-field-save:hover {
+.edit-icon,
+.edit-field-save,
+.edit-field-cancel {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    font-size: 1rem;
+}
+
+.edit-icon {
+    color: var(--subText);
+    right: 2%;
+}
+
+.edit-icon:hover {
+    color: var(--accent);
+}
+
+.edit-field-save {
     color: #32e875;
-    scale: 1.1;
+    right: 2%;
+}
+
+.edit-field-save:hover {
+    color: forestgreen;
+}
+
+.edit-field-cancel {
+    color: coral;
+    right: 4rem;
+}
+
+.edit-field-cancel:hover {
+    color: crimson;
 }
 
 .logout-button {
@@ -149,6 +166,12 @@
         font-size: .8rem;
     }
 
+    .edit-field-cancel {
+        right: 2.5rem;
+        font-size: .8rem;
+        top: 0px;
+    }
+
 }
 
 @media screen and (max-width:380px) {
@@ -181,7 +204,7 @@
     .edit-icon,
     .edit-field-save {
         right: 0;
-        top: 0px;
         font-size: .8rem;
     }
+
 }
