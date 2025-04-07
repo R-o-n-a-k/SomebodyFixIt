@@ -9,11 +9,12 @@ import { getUserId } from "../utils/likes";
 
 export default function useComments(token) {
   const [currentUserId, setCurrentUserId] = useState(null);
-
   const [loggedInUserName, setLoggedInUserName] = useState("");
   const [showComments, setShowComments] = useState({});
   const [comments, setComments] = useState({});
   const [newComment, setNewComment] = useState({});
+
+  const [activeCommentIcon, setActiveCommentICon] = useState(null);
 
   useEffect(() => {
     const fetchUserId = async () => {
@@ -46,6 +47,8 @@ export default function useComments(token) {
       ...prev,
       [postId]: !prev[postId],
     }));
+    // Toggle the active icon
+    setActiveCommentICon((prev) => (prev === postId ? null : postId));
 
     if (!comments[postId]) {
       const postComments = await fetchComments(postId);
@@ -114,5 +117,6 @@ export default function useComments(token) {
     handleDeleteComment,
     handleUpvoteComment,
     initializeComments,
+    activeCommentIcon,
   };
 }

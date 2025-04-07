@@ -27,6 +27,7 @@ function CreatePost({ token }) {
     handleUpvoteComment,
     setNewComment,
     initializeComments,
+    activeCommentIcon,
   } = useComments(token);
 
   useEffect(() => {
@@ -104,11 +105,19 @@ function CreatePost({ token }) {
                   className="comment-section"
                   onClick={() => handleCommentClick(item.id)}
                 >
-                  <i className="fa-solid fa-comments comment-icon" />
+                  <i
+                    className={`fa-${
+                      activeCommentIcon === item.id ? "solid" : "regular"
+                    } fa-comments comment-icon`}
+                  />
                   <span>{comments[item.id]?.length || 0}</span>
                 </div>
               </div>
-              <div className="comment-wrapper">
+              <div
+                className={`comment-wrapper ${
+                  showComments[item.id] ? "animate-in" : ""
+                }`}
+              >
                 {showComments[item.id] && (
                   <>
                     <div className="comment-box">
@@ -155,11 +164,17 @@ function CreatePost({ token }) {
                               key={topComment.id}
                               className="single-comment pinned-comment"
                             >
-                              <Avatar
-                                name={topComment.user_name}
-                                className="comment-avatar"
-                              />
-                              <span>{topComment.content}</span>
+                              <div className="comment-left">
+                                <Avatar
+                                  name={topComment.user_name}
+                                  className="comment-avatar"
+                                />
+                                <span className="comment-text">
+                                  <i className="fa-solid fa-thumbtack pin-icon"></i>
+                                  {/* <span className="pin-icon">📌</span> */}
+                                  {topComment.content}
+                                </span>
+                              </div>
                               <div className="comment-actions">
                                 <span>{topComment.upvotes || 0}</span>
                                 <button
@@ -193,11 +208,15 @@ function CreatePost({ token }) {
 
                             {restComments.map((comment) => (
                               <div key={comment.id} className="single-comment">
-                                <Avatar
-                                  name={comment.user_name}
-                                  className="comment-avatar"
-                                />
-                                <span>{comment.content}</span>
+                                <div className="comment-left">
+                                  <Avatar
+                                    name={comment.user_name}
+                                    className="comment-avatar"
+                                  />
+                                  <span className="comment-text">
+                                    {comment.content}
+                                  </span>
+                                </div>
                                 <div className="comment-actions">
                                   <span>{comment.upvotes || 0}</span>
                                   <button
