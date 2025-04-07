@@ -14,7 +14,8 @@
     --subText: #616161;
     --background: #fefbfb;
     --primary: #cf3043;
-    --secondary: #8df0ea;
+    /* --secondary: #8df0ea; */
+    --secondary: rgb(69, 232, 235);
     --accent: #5e61e9;
 
     /* :root[data-theme="light"] {
