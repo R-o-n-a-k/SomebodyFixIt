@@ -71,6 +71,11 @@ export default function MyProfile({ token }) {
     }
   };
 
+  const handleCancelEdit = () => {
+    setEditField(null);
+    setInputValue("");
+  };
+
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
@@ -151,8 +156,14 @@ export default function MyProfile({ token }) {
                       title="FirstName LastName"
                     />
                     <i
+                      className="fa-solid fa-xmark edit-field-cancel"
+                      onClick={handleCancelEdit}
+                      title="Cancel"
+                    />
+                    <i
                       class="fa-solid fa-check edit-field-save"
                       onClick={handleSaveClick}
+                      title="save"
                     />
                   </div>
                 ) : (
@@ -179,8 +190,14 @@ export default function MyProfile({ token }) {
                       placeholder="Write Something about you..."
                     />
                     <i
+                      className="fa-solid fa-xmark edit-field-cancel"
+                      onClick={handleCancelEdit}
+                      title="Cancel"
+                    />
+                    <i
                       class="fa-solid fa-check edit-field-save"
                       onClick={handleSaveClick}
+                      title="save"
                     ></i>
                   </div>
                 ) : (
@@ -216,8 +233,14 @@ export default function MyProfile({ token }) {
                       required
                     />
                     <i
+                      className="fa-solid fa-xmark edit-field-cancel"
+                      onClick={handleCancelEdit}
+                      title="Cancel"
+                    />
+                    <i
                       class="fa-solid fa-check edit-field-save"
                       onClick={handleSaveClick}
+                      title="save"
                     />
                   </div>
                 ) : (

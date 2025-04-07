@@ -238,14 +238,10 @@
     align-self: center;
 }
 
-.pinned-comment {
-    position: relative;
-}
-
 .pin-icon {
-    position: relative;
-    top: -.7rem;
-    left: -.7rem;
+    position: absolute;
+    top: .3rem;
+    left: 2.8rem;
     color: orangered;
     transform: rotate(-45deg);
 }
@@ -321,4 +317,8 @@
         max-width: 70%;
     }
 
+    .pin-icon {
+        top: .5rem;
+        left: 3rem;
+    }
 }
