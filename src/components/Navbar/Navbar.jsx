@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/images/navbarLogo.svg";
+import logo from "../../assets/images/somebodyfixitNav.png";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar({ token }) {
@@ -22,9 +22,9 @@ function Navbar({ token }) {
               className="nav-logo"
               onClick={() => (window.location.href = "/home")}
             />
-            <p>
+            {/* <p>
               Somebody<span>FixIt</span>
-            </p>
+            </p> */}
           </div>
           <ul className="nav-list">
             <li title="Search your problems">

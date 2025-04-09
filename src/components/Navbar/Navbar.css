@@ -5,7 +5,8 @@
     left: 0;
     z-index: 100;
     color: var(--font);
-    background-color: #FFF0F3;
+    /* background-color: #FFF0F3; */
+    background-color: #f3fbff;
 }
 
 .nav {
@@ -36,7 +37,7 @@
 
 .logo img {
     cursor: pointer;
-    height: 5vh;
+    height: 6vh;
 }
 
 .nav-list {

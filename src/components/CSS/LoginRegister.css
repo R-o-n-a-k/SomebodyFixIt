@@ -63,8 +63,7 @@
 }
 
 .lr-logo img {
-    width: 7rem;
-    height: 7rem;
+    width: 15rem;
     cursor: pointer;
     margin-bottom: .5rem;
     /* animation: bouncePulse 3s infinite ease-in-out; */
@@ -298,9 +297,7 @@
     }
 
     .lr-logo img {
-        width: 5rem;
-        height: 5rem;
-
+        width: 12rem;
     }
 
     .lr-logo p {
