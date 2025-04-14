@@ -10,7 +10,8 @@
     height: max-content;
     border-radius: 1rem;
     padding: 1rem;
-    box-shadow: var(--box-shadow);
+    background-color: var(--post-color);
+    box-shadow: var(--box-shadow-2);
 }
 
 .post-profile {
@@ -25,14 +26,14 @@
     right: 12px;
     background: transparent;
     border: none;
-    color: var(--subText);
+    color: var(--sub-text);
     font-size: var(--normal-font-size);
     cursor: pointer;
     z-index: 1;
 }
 
 .post-delete-btn:hover {
-    color: crimson;
+    color: var(--error-dark);
 }
 
 
@@ -44,7 +45,7 @@
 
 .post-data {
     margin-top: 1rem;
-    color: var(--subText);
+    color: var(--sub-text);
     text-align: justify;
 }
 
@@ -83,6 +84,7 @@
 
 .comment-icon {
     color: var(--secondary);
+
 }
 
 .like-icon:hover,
@@ -91,8 +93,8 @@
 }
 
 .pinned-comment {
-    background-color: #e0f7fa;
-    border-left: 4px solid #00acc1;
+    background-color: var(--pinned-comment-bg);
+    border-left: 4px solid var(--pinned-comment-border);
     padding: 0.5rem;
     margin-bottom: 0.75rem;
     border-radius: 6px;
@@ -104,7 +106,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 3rem;
     padding: .1rem .5rem;
     margin-top: 1rem;
@@ -145,7 +147,6 @@
     transition: var(--animate);
     transform: scale(1.2);
     transform: translateX(3px);
-    color: var(--accent);
 }
 
 
@@ -184,7 +185,7 @@
     width: 1.5rem;
     height: 1.5rem;
     font-size: var(--tiny-font-size);
-    background-color: darkcyan;
+    background-color: var(--comment-avatar);
 }
 
 .comment-left {
@@ -196,11 +197,11 @@
 
 .comment-text {
     color: var(--Text);
-    background-color: #edf7fa;
+    background-color: var(--comment-text-bg);
     padding: 4px 12px;
     border-radius: 12px;
     word-wrap: break-word;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-1);
     max-width: 85%;
 }
 
@@ -227,11 +228,11 @@
 }
 
 .upvote-btn {
-    color: deepskyblue;
+    color: var(--upvote);
 }
 
 .delete-btn {
-    color: crimson;
+    color: var(--error);
 }
 
 .comment-actions span {
@@ -287,9 +288,7 @@
     }
 
     .comment-avatar {
-        width: 1rem;
-        height: 1rem;
-        font-size: var(--tiny-font-size);
+        padding: .9rem;
     }
 
     .comment-textarea {
@@ -308,8 +307,7 @@
     }
 
     .single-comment .comment-avatar {
-        width: .8rem;
-        height: .8rem;
+        padding: .7rem;
     }
 
     .comment-left {
@@ -318,7 +316,7 @@
     }
 
     .pin-icon {
-        top: .5rem;
-        left: 3rem;
+        top: .4rem;
+        left: 2.5rem;
     }
 }
