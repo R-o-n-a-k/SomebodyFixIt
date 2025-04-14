@@ -9,43 +9,76 @@
     --pure-black: #000000;
     --white-color: #F5F8FA;
 
-    /* --text: #1d070a; */
+    /* ---------------------------light mode ---------------------------*/
+    --nav-border: #E0E0E0;
+    --theme-icon: #91D1F7;
+    --nav-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
     --text: #313131;
-    --subText: #616161;
+    --sub-text: #616161;
+    --border-color: #ccc;
     --background: #fefbfb;
-    --primary: #cf3043;
-    /* --secondary: #8df0ea; */
-    --secondary: rgb(69, 232, 235);
-    --accent: #5e61e9;
-
-    /* :root[data-theme="light"] {
-        --text: #1d070a;
-        --background: #fefbfb;
-        --primary: #cf3043;
-        --secondary: #8df0ea;
-        --accent: #5e61e9;
-    }
-
-    :root[data-theme="dark"] {
-        --text: #f8e2e5;
-        --background: #040101;
-        --primary: #cf3043;
-        --secondary: #0f716a;
-        --accent: #1618a2;
-    } */
-    --box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
-    --animate: .2s ease-in-out;
+    --login-bg: #fefbfb;
+    --nav-color: #E6F5FF;
+    --post-color: #fafafa;
+    --primary: #FF1654;
+    --accent: #33A1FD;
+    /* --secondary: #FFE28A; */
+    --secondary: #A89AFF;
+    --success: #32e875;
+    --success-dark: forestgreen;
+    --error: #FF4F64;
+    --error-dark: crimson;
+    --profile-card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    --comment-avatar: #8DE1E0;
+    --comment-text-bg: #edf7fa;
+    --pinned-comment-bg: #e6fcff;
+    --pinned-comment-border: #A1F1F4;
+    --upvote: deepskyblue;
+    --box-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --box-shadow-2: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    --box-shadow-3: 0 5px 15px rgba(0, 0, 0, 0.35);
+    --animate: all .2s ease-in-out;
     /* ---------------------------------- Fonts --------------------------------- */
     --body-font: "Poppins",
         sans-serif;
     --logo-font: "Orbitron",
         sans-serif;
 
-    /* ---------------------------------- Fonts --------------------------------- */
+    /* ---------------------------------- Font size ----------------------------- */
     --normal-font-size: 1rem;
     --small-font-size: 0.875rem;
     --smaller-font-size: 0.813rem;
     --tiny-font-size: 0.635rem;
+}
+
+/* ---------------------------dark mode ---------------------------*/
+[data-theme="dark"] {
+    --theme-icon: #FFE28A;
+    --nav-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+    --background: #1E1E1E;
+    --login-bg: #2F2F2F;
+    --primary: #DC143C;
+    --accent: #4FA6EC;
+    /* --secondary: #FFD382; */
+    --secondary: #6C5CE7;
+    --text: #F5F5F5;
+    --sub-text: #C8C8C8;
+    --nav-color: #242424;
+    --post-color: #2A2A2A;
+    --border-color: #444;
+    --success: #2fd170;
+    --success-dark: #228B22;
+    --error: #FF6B81;
+    --error-dark: #DC143C;
+    --profile-card-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    --comment-avatar: #3A8784;
+    --comment-text-bg: #2C3E4F;
+    --pinned-comment-bg: #1F333B;
+    --pinned-comment-border: #3BA9C8;
+    --upvote: #00bfff;
+    --box-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.6);
+    --box-shadow-2: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --box-shadow-3: 0 8px 16px rgba(0, 0, 0, 0.45);
 }
 
 /* ---------------------------------- Base ---------------------------------- */
@@ -53,7 +86,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 html {
@@ -119,22 +152,19 @@ button {
 
 ::-webkit-scrollbar {
     width: .5rem;
-    background-color: var(--background);
+    background-color: transparent;
     border-radius: .3rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--secondary);
-    border-radius: .5rem;
+    background-color: var(--nav-color);
+    border-radius: .3rem;
 }
 
 /* --------------------------- Responsive Section --------------------------- */
-/* Responsive Fonts */
 @media screen and (max-width:992px) {}
 
 /* ------------------------------- BREAKPOINTS ------------------------------ */
-
-
 @media screen and (max-width:992px) {}
 
 @media screen and (max-width:768px) {}

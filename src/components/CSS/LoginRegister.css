@@ -1,7 +1,5 @@
 .lr-main {
-    background-image: url("../../assets/images/login-bg.svg");
-    background-repeat: no-repeat;
-    /* background-color: var(--primary); */
+    background-color: var(--primary);
     height: 100vh;
     width: 100%;
     display: grid;
@@ -32,17 +30,16 @@
     transform-style: preserve-3d;
 }
 
-
 .lr-container,
 .lr-intro {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--box-shadow-3);
     border-radius: 3rem;
     width: 100%;
     height: 100%;
     position: absolute;
     overflow: hidden;
     backface-visibility: hidden;
-    background-color: var(--background);
+    background-color: var(--login-bg);
 }
 
 .lr-intro {
@@ -53,48 +50,18 @@
     transform: rotateY(180deg);
 }
 
-
 .lr-logo {
     font-family: var(--logo-font);
     align-items: center;
     text-align: center;
     margin: 2rem auto;
-
 }
 
 .lr-logo img {
     width: 15rem;
     cursor: pointer;
     margin-bottom: .5rem;
-    /* animation: bouncePulse 3s infinite ease-in-out; */
 }
-
-/* @keyframes bouncePulse {
-    0% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-
-    25% {
-        transform: scale(1.1) translateY(-10px);
-        opacity: 0.9;
-    }
-
-    50% {
-        transform: scale(0.9) translateY(5px);
-        opacity: 0.8;
-    }
-
-    75% {
-        transform: scale(1.05) translateY(-5px);
-        opacity: 0.9;
-    }
-
-    100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-} */
 
 .lr-logo p {
     letter-spacing: 5px;
@@ -115,22 +82,21 @@
 
 .lr-slogan span {
     display: inline-block;
-    font-weight: 600;
-    color: var(--accent);
+    font-weight: bolder;
+    color: var(--secondary);
 }
 
 .lr-flip-btn {
-    color: var(--pure-white);
-    background-color: var(--primary);
+    color: var(--background);
+    background-color: var(--accent);
 }
 
 .lr-flip-btn:hover {
-    border: 2px solid var(--primary);
+    border: 2px solid var(--accent);
     background: transparent;
-    color: var(--primary);
-    transition: all .3s ease-in-out;
+    color: var(--accent);
+    transition: var(--animate);
 }
-
 
 /* ----------------common form css--------------------- */
 #chk {
@@ -138,7 +104,7 @@
 }
 
 .form-heading {
-    color: var(--primary);
+    color: var(--accent);
     font-size: 2.3em;
     justify-content: center;
     display: flex;
@@ -170,15 +136,14 @@
 }
 
 .form-input:focus:valid {
-    border-color: #32e875;
+    border-color: var(--success);
 }
 
 .form-input:focus:invalid {
-    border-color: #ff8c08;
+    border-color: var(--error);
 }
 
 /* -----------------form buttons-------------------- */
-
 .form-buton {
     width: 40%;
     height: 2.5rem;
@@ -191,7 +156,7 @@
     outline: none;
     border: none;
     border-radius: 3rem;
-    transition: .2s ease-in-out;
+    transition: var(--animate);
     cursor: pointer;
 }
 
@@ -204,75 +169,62 @@
 
 .signup .form-subheading {
     color: var(--Text);
-
 }
 
-/* signup input */
 .signup .form-input {
-    border-color: var(--primary);
-    color: var(--pure-black);
+    border-color: var(--accent);
+    color: var(--text);
 }
 
-/* sigup button css */
 .signup-btn {
-    background-color: var(--primary);
-    color: var(--pure-white);
+    background-color: var(--accent);
+    color: var(--background);
 }
 
 .signup-btn:hover {
-    border: 2px solid var(--primary);
+    border: 2px solid var(--accent);
     background: transparent;
-    color: var(--primary);
-    transition: all .3s ease-in-out;
+    color: var(--accent);
+    transition: var(--animate);
 }
-
-
 
 /* --------------------login---------------- */
-
 .login {
     height: 460px;
-    background: var(--primary);
+    background: var(--accent);
     border-radius: 60% / 10%;
     transform: translateY(-180px);
-    transition: .8s ease-in-out;
+    transition: .7s ease-in-out;
 }
 
-/* login headind and subheading */
 .login .form-heading {
-
-    color: var(--pure-white);
+    color: var(--background);
     transform: scale(.6);
 }
 
 .login .form-subheading {
-    color: lightgrey;
+    color: var(--background);
 }
 
-/*login input*/
 .login .form-input {
-    border-color: var(--pure-white);
-    color: var(--pure-white);
+    border-color: var(--background);
+    color: var(--background);
 }
 
-.login .form-input::placeholder {
-    color: lightcoral;
-}
+/* .login .form-input::placeholder {} */
 
-/* login button css */
 .login-btn {
-    color: var(--primary);
-    background-color: var(--pure-white);
+    color: var(--accent);
+    background-color: var(--background);
 }
 
 .login-btn:hover {
-    border: 2px solid var(--pure-white);
+    border: 2px solid var(--background);
     background: transparent;
-    color: var(--pure-white);
-    transition: all .3s ease-in-out;
+    color: var(--background);
+    transition: var(--animate);
 }
 
-/* -----------pages swapped on click -------------*/
 #chk:checked~.login {
     transform: translateY(-500px);
 }
@@ -284,10 +236,6 @@
 #chk:checked~.signup .form-heading {
     transform: scale(.6);
 }
-
-@media screen and (max-width:768px) {}
-
-@media screen and (max-width:576px) {}
 
 @media screen and (max-width:380px) {
 
@@ -311,7 +259,6 @@
     .form-heading {
         font-size: 1.5rem;
         margin: 40px auto 20px auto;
-
     }
 
     .form-subheading {
@@ -333,7 +280,7 @@
     }
 
     .login {
-        background: var(--primary);
+        background: var(--accent);
         transform: translateY(-130px);
 
     }
@@ -341,9 +288,4 @@
     #chk:checked~.login {
         transform: translateY(-400px);
     }
-
-
-
 }
-
-@media screen and (max-width:350px) {}

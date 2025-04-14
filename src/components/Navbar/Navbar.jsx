@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/images/somebodyfixitNav.png";
 import { Link, useLocation } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar({ token }) {
   /* ---------------------------- change background navbar --------------------------- */
@@ -49,6 +50,9 @@ function Navbar({ token }) {
               <Link to="/my-profile">
                 <i className="fa-solid fa-circle-user"></i>
               </Link>
+            </li>
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </nav>

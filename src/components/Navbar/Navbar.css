@@ -5,15 +5,15 @@
     left: 0;
     z-index: 100;
     color: var(--font);
-    /* background-color: #FFF0F3; */
-    background-color: #f3fbff;
+    background-color: var(--nav-color);
+    border: 1px solid var(--nav-shadownav-border);
 }
 
 .nav {
     width: 65%;
     padding: 1rem auto;
     margin: 0 auto;
-    height: 4rem;
+    height: 3.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,32 +37,30 @@
 
 .logo img {
     cursor: pointer;
-    height: 6vh;
+    height: 5vh;
 }
 
 .nav-list {
     display: flex;
     align-items: center;
     column-gap: 2rem;
-    color: var(--subText);
+    color: var(--sub-text);
 }
 
 .nav-list li.active i {
     color: var(--accent);
     transform: scale(1.2);
     transition: var(--animate);
-
 }
 
-/* Change background header on scroll */
 .scroll__header {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+    box-shadow: var(--nav-shadow);
 }
 
 .search {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
+    border: 2px solid var(--border-color);
     border-radius: 1rem;
     padding: 5px;
     max-width: max-content;
@@ -76,20 +74,21 @@
 }
 
 .search:hover {
-    border-color: #888;
+    border-color: var(--sub-text);
 }
 
 .search:focus-within {
     border-color: var(--accent);
 }
 
+
+.theme-toggle-icon {
+    cursor: pointer;
+    color: var(--theme-icon);
+}
+
+
 /* --------------------------- Responsive Section --------------------------- */
-/* Responsive Fonts */
-@media screen and (max-width:992px) {}
-
-/* ------------------------------- BREAKPOINTS ------------------------------ */
-
-@media screen and (max-width:992px) {}
 
 @media screen and (max-width:768px) {
     .header {
@@ -101,17 +100,13 @@
     }
 
     .search input {
-        width: 7rem;
+        width: 9.5rem;
     }
 }
 
 @media screen and (max-width:576px) {
     .nav {
         width: 90%;
-    }
-
-    .search input {
-        width: 4rem;
     }
 }
 
@@ -130,8 +125,11 @@
 
     .search input {
         font-size: var(--tiny-font-size);
-        width: 3rem;
+        width: 2.4rem;
+    }
+
+    .logo img {
+
+        height: 4vh;
     }
 }
-
-@media screen and (max-width:350px) {}

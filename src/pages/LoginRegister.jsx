@@ -8,7 +8,7 @@ import {
   handleInputChange,
   handleFormSubmit,
   handleLogin,
-} from "../utils/authFunctions"; // Path to your logic file
+} from "../utils/authFunctions";
 
 function LoginRegister({ setToken }) {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function LoginRegister({ setToken }) {
 
   const handleOutsideClick = (event) => {
     if (!event.target.closest(".lr-card")) {
-      setFlipped(false); // Reset card flip on outside click
+      setFlipped(false);
     }
   };
 
@@ -49,7 +49,7 @@ function LoginRegister({ setToken }) {
                 <div className="lr-slogan">
                   <p> Got any problem or stuck with something?</p>
                   <br />
-                  <span data-text="">😉 Just Ask here! 👇</span>
+                  <span data-text="">Just Ask here!</span>
                 </div>
                 <button onClick={handleFlip} className="form-buton lr-flip-btn">
                   <i className="fa-solid fa-arrow-right" />

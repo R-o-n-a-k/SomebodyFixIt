@@ -3,7 +3,8 @@
 }
 
 .profile-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--post-color);
+    box-shadow: var(--profile-card-shadow);
     padding: 2rem 3rem;
     border-radius: 3rem;
     width: 100%;
@@ -39,7 +40,7 @@
 
 .profile-picture-delete-btn {
     background: transparent;
-    color: red;
+    color: var(--error);
     position: absolute;
     bottom: -10px;
     left: 55%;
@@ -51,12 +52,9 @@
     opacity: 0.5;
 }
 
-.profile-picture-delete-btn:hover {
-    color: darkred;
-}
-
+.profile-picture-delete-btn:hover,
 .profile-picture-delete-btn:focus {
-    color: darkred;
+    color: var(--error-dark);
 }
 
 .my-profile-name,
@@ -86,30 +84,30 @@
 }
 
 .edit-icon {
-    color: var(--subText);
+    color: var(--sub-text);
     right: 2%;
 }
 
 .edit-icon:hover {
-    color: var(--accent);
+    color: var(--secondary);
 }
 
 .edit-field-save {
-    color: #32e875;
+    color: var(--success);
     right: 2%;
 }
 
 .edit-field-save:hover {
-    color: forestgreen;
+    color: var(--success-dark);
 }
 
 .edit-field-cancel {
-    color: coral;
+    color: var(--error);
     right: 4rem;
 }
 
 .edit-field-cancel:hover {
-    color: crimson;
+    color: var(--error-dark);
 }
 
 .logout-button {
@@ -124,7 +122,7 @@
     transition: .2s ease-in-out;
     cursor: pointer;
     background-color: var(--primary);
-    color: var(--pure-white);
+    color: var(--background);
     border: 2px solid var(--primary);
 }
 
@@ -138,7 +136,6 @@
 /* --------------------------- Responsive Section --------------------------- */
 
 @media screen and (max-width:768px) {
-
     .profile-picture {
         width: 8rem;
         height: 8rem;
