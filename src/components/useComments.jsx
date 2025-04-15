@@ -30,31 +30,61 @@ export default function useComments(token) {
     }
   }, [token]);
 
+  // const initializeComments = async (posts) => {
+  //   const commentMap = {};
+  //   const upvotedStatus = {};
+
+  //   for (let item of posts) {
+  //     const postComments = await fetchComments(item.id);
+  //     commentMap[item.id] = postComments;
+
+  //     for (let comment of postComments) {
+  //       const userId = await getUserId(token?.user?.id);
+  //       if (!userId) continue;
+
+  //       const hasUpvoted = await hasUserUpvotedComment(comment.id, userId);
+  //       upvotedStatus[comment.id] = hasUpvoted;
+  //     }
+  //   }
+  //   setComments(commentMap);
+  //   setUpvotedComments(upvotedStatus);
+
+  //   setLoggedInUserName(
+  //     token.user?.user_metadata?.first_name || "Default Profile"
+  //   );
+
+  //   // const userId = await getUserId(token?.user?.id);
+  //   // setCurrentUserId(userId);
+  // };
+
   const initializeComments = async (posts) => {
+    const userId = await getUserId(token?.user?.id);
+    if (!userId) return;
+
     const commentMap = {};
     const upvotedStatus = {};
 
-    for (let item of posts) {
-      const postComments = await fetchComments(item.id);
-      commentMap[item.id] = postComments;
+    // const fetchAllComments =
+    await Promise.all(
+      posts.map(async (item) => {
+        const postComments = await fetchComments(item.id);
+        commentMap[item.id] = postComments;
 
-      for (let comment of postComments) {
-        const userId = await getUserId(token?.user?.id);
-        if (!userId) continue;
+        await Promise.all(
+          postComments.map(async (comment) => {
+            const hasUpvoted = await hasUserUpvotedComment(comment.id, userId);
+            upvotedStatus[comment.id] = hasUpvoted;
+          })
+        );
+      })
+    );
 
-        const hasUpvoted = await hasUserUpvotedComment(comment.id, userId);
-        upvotedStatus[comment.id] = hasUpvoted;
-      }
-    }
     setComments(commentMap);
     setUpvotedComments(upvotedStatus);
 
     setLoggedInUserName(
       token.user?.user_metadata?.first_name || "Default Profile"
     );
-
-    // const userId = await getUserId(token?.user?.id);
-    // setCurrentUserId(userId);
   };
 
   const handleCommentClick = async (postId) => {
