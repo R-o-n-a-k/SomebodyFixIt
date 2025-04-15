@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../components/CSS/LoginRegister.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/somebodyfixitLR.png";
-
 import {
   initialFormValues,
   handleInputChange,
@@ -40,7 +38,8 @@ function LoginRegister({ setToken }) {
             <div className="lr-inner">
               <div className="lr-intro">
                 <div className="lr-logo">
-                  <img src={logo} alt="logo" className="lr-intro-logo" />
+                  {/* src={logo} */}
+                  <img alt="logo" className="lr-intro-logo" />
                   {/* <p>
                     Somebody<span>FixIt</span>
                   </p> */}

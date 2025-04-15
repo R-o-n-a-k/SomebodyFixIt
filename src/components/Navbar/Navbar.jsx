@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
-import logo from "../../assets/images/somebodyfixitNav.png";
+import logo from "../../assets/images/logo.png";
+
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 

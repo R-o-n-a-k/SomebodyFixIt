@@ -67,6 +67,7 @@
 
 .edit-field input,
 .edit-field textarea {
+    color: var(--sub-text);
     border: none;
     outline: none;
     width: 100%;
