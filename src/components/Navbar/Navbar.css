@@ -67,6 +67,7 @@
 }
 
 .search input {
+    color: var(--text);
     margin: auto 5px;
     border: none;
     outline: none;

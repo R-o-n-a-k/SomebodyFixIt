@@ -10,6 +10,7 @@
     --white-color: #F5F8FA;
 
     /* ---------------------------light mode ---------------------------*/
+    --logo-login-path: url(/src/assets/images/lightLoginLogo.PNG);
     --nav-border: #E0E0E0;
     --theme-icon: #91D1F7;
     --nav-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
@@ -53,6 +54,7 @@
 
 /* ---------------------------dark mode ---------------------------*/
 [data-theme="dark"] {
+    --logo-login-path: url(/src/assets/images/darkLoginLogo.PNG);
     --theme-icon: #FFE28A;
     --nav-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
     --background: #1E1E1E;

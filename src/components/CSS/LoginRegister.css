@@ -1,5 +1,5 @@
 .lr-main {
-    background-color: var(--secondary);
+    background-color: var(--nav-color);
     height: 100vh;
     width: 100%;
     display: grid;
@@ -58,9 +58,9 @@
 }
 
 .lr-logo img {
-    width: 15rem;
+    content: var(--logo-login-path);
+    max-width: 15rem;
     cursor: pointer;
-    margin-bottom: .5rem;
 }
 
 .lr-logo p {
@@ -76,25 +76,25 @@
 .lr-slogan {
     font-size: var(--normal-font-size);
     line-height: 1.5rem;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-align: center;
 }
 
 .lr-slogan span {
     display: inline-block;
-    font-weight: bolder;
+    font-weight: 550;
     color: var(--secondary);
 }
 
 .lr-flip-btn {
     color: var(--background);
-    background-color: var(--accent);
+    background-color: var(--primary);
 }
 
 .lr-flip-btn:hover {
-    border: 2px solid var(--accent);
+    border: 2px solid var(--primary);
     background: transparent;
-    color: var(--accent);
+    color: var(--primary);
     transition: var(--animate);
 }
 
@@ -245,7 +245,7 @@
     }
 
     .lr-logo img {
-        width: 12rem;
+        max-width: 12rem;
     }
 
     .lr-logo p {
