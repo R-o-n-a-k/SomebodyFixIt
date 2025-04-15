@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 export let updateProblem = () => {};
 
-function CreatePost({ token }) {
+function CreatePost({ token, searchQuery }) {
   const [problems, setProblems] = useState([]);
   updateProblem = setProblems;
 
@@ -62,10 +62,14 @@ function CreatePost({ token }) {
     }
   };
 
+  const filteredProblems = problems.filter((item) =>
+    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <div className="post-section">
-        {problems.map((item, index) => (
+        {filteredProblems.map((item, index) => (
           <div className="post-content" key={index}>
             {item.user_id === currentUserId && (
               <button
