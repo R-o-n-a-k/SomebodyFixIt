@@ -58,10 +58,17 @@ export default function useComments(token) {
   };
 
   const handleCommentClick = async (postId) => {
-    setShowComments((prev) => ({
-      ...prev,
-      [postId]: !prev[postId],
-    }));
+    setShowComments((prev) => {
+      const newState = {};
+      // If already open, close it
+      if (prev[postId]) {
+        return newState;
+      }
+      // Otherwise open only the clicked one
+      newState[postId] = true;
+      return newState;
+    });
+
     // Toggle the active icon
     setActiveCommentICon((prev) => (prev === postId ? null : postId));
 

@@ -82,6 +82,7 @@ function CreatePost({ token }) {
             <div className="post-data">{item.description}</div>
             {item.image_url && (
               <img
+                onContextMenu={(e) => e.preventDefault()}
                 src={`${import.meta.env.VITE_SUPABASE_IMAGE_URL}${
                   item.image_url
                 }`}
