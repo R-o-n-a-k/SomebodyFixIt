@@ -238,6 +238,9 @@
 }
 
 @media screen and (max-width:380px) {
+    .lr-main {
+        height: 100dvh;
+    }
 
     .lr-card {
         width: 300px;
