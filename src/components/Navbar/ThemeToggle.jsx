@@ -5,12 +5,12 @@ function ThemeToggle() {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
-    setTheme(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
+    if (storedTheme) {
+      setTheme(storedTheme);
+      document.documentElement.setAttribute("data-theme", storedTheme);
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
   }, []);
 
   const toggleTheme = () => {
