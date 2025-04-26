@@ -120,10 +120,6 @@ a {
     text-decoration: none;
 }
 
-a:-webkit-any-link {
-    color: inherit !important;
-}
-
 button {
     cursor: pointer;
     border: none;

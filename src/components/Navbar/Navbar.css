@@ -53,6 +53,10 @@
     transition: var(--animate);
 }
 
+.nav-list a:-webkit-any-link {
+    color: inherit !important;
+}
+
 .scroll__header {
     box-shadow: var(--nav-shadow);
 }
