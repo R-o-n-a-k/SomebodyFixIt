@@ -5,6 +5,7 @@ import { fetchProblems, deleteProblemById } from "../../utils/postProblem";
 import useLikes from "../useLikes";
 import useComments from "../useComments";
 import { toast } from "react-toastify";
+import Linkify from "linkify-react"; // Import at top if not already
 
 export let updateProblem = () => {};
 
@@ -66,6 +67,12 @@ function CreatePost({ token, searchQuery }) {
     item.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const linkifyOptions = {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "post-link", // We'll style this
+  };
+
   return (
     <>
       <div className="post-section">
@@ -83,7 +90,9 @@ function CreatePost({ token, searchQuery }) {
               <Avatar name={item.user_name} className="ask-avatar" />
               <label className="post-profile-name">{item.user_name}</label>
             </div>
-            <div className="post-data">{item.description}</div>
+            <div className="post-data">
+              <Linkify options={linkifyOptions}>{item.description}</Linkify>
+            </div>
             {item.image_url && (
               <img
                 onContextMenu={(e) => e.preventDefault()}
@@ -177,7 +186,9 @@ function CreatePost({ token, searchQuery }) {
                                 />
                                 <i className="fa-solid fa-thumbtack pin-icon"></i>
                                 <span className="comment-text">
-                                  {topComment.content}
+                                  <Linkify options={linkifyOptions}>
+                                    {topComment.content}
+                                  </Linkify>
                                 </span>
                               </div>
                               <div className="comment-actions">
@@ -226,7 +237,9 @@ function CreatePost({ token, searchQuery }) {
                                     className="comment-avatar"
                                   />
                                   <span className="comment-text">
-                                    {comment.content}
+                                    <Linkify options={linkifyOptions}>
+                                      {comment.content}
+                                    </Linkify>
                                   </span>
                                 </div>
                                 <div className="comment-actions">
