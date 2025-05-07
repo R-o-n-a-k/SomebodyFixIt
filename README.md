@@ -9,24 +9,24 @@
 
 ## 🌐 Technologies Used
 
-- ⚛️ **Frontend:** React, JavaScript
-- ⚡ **Backend:** Supabase (PostgreSQL + Auth + Realtime DB + Storage)
-- 📦 **NPM Libraries:** UUID, React-Toast, etc.
-- 🎨 **Styling:** CSS
-- ☁️ **Hosting & Deployment:** Netlify
+- **Frontend:** React, JavaScript
+- **Backend:** Supabase (PostgreSQL + Auth + Realtime DB + Storage)
+- **NPM Libraries:** UUID, React-Toast, etc.
+- **Styling:** CSS
+- **Hosting & Deployment:** Netlify
 
 
 ## ✨ Features
 
-- 🔐 User Authentication
-- 📸 Image uploading & embedded links
-- ❤️ Likes & Upvotes for realtime like and upvote functionality with live UI sync                    |
-- 💬 Live comment system with **auto-pinning of top-voted answers**
-- 📌 Auto-Pinning: **Top-upvoted comment gets pinned** live as votes change
-- 🌓 Light/Dark theme toggle
-- 📁 Modular structure for easy scaling
-- 🧭 Dynamic routing
-- 📱 Responsive design
+- User Authentication
+- Image uploading & embedded links
+- Likes & Upvotes for realtime like and upvote functionality with live UI sync                    |
+- Live comment system with **auto-pinning of top-voted answers**
+- Auto-Pinning: **Top-upvoted comment gets pinned** live as votes change
+- Light/Dark theme toggle
+- Modular structure for easy scaling
+- Dynamic routing
+- Responsive design
 
 ## 📁 Project Structure
 
@@ -107,3 +107,6 @@ npm run dev
 
 ## 🌐 Live Demo
 🔗 [somebodyfixit](https://somebodyfixit.netlify.app/)
+
+<hr> 
+<p align="center">Built to connect problems with solutions — in real time 🔧</p>
