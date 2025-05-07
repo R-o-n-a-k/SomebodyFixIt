@@ -1,6 +1,6 @@
 # SomebodyFixIT
 <p align="center">
-  <img src="https://github.com/R-o-n-a-k/R-o-n-a-k/blob/ab51c87e12260442bd04c8c548af4b24915f3ee5/assets/SomebodyFixIt.gif?raw=true" alt="SomebodyFixIt" width="100%" />
+  <img src="https://github.com/R-o-n-a-k/assets/blob/40b401458ae867b491ec9390bd8de3d8d5a42389/assets/SomebodyFixIt.gif?raw=true" alt="SomebodyFixIt" width="100%" />
 </p>
 
 ## 🚀 About Project
@@ -95,19 +95,15 @@ git clone https://github.com/R-o-n-a-k/SomebodyFixIt.git
 
 cd SomebodyFixIt
 ```
-
 2. **Install dependencies:**
-
 ```
 npm install
 ```
-
 3. **Run the development server:**
-
 ```
 npm run dev
 ```
-
 4. Open localhost link to view it in the browser.
 
-
+## 🌐 Live Demo
+🔗 [somebodyfixit](https://somebodyfixit.netlify.app/)
