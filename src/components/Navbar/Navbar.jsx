@@ -36,7 +36,6 @@ function Navbar({ token, onSearch }) {
   };
 
   const handleKeyDown = (e) => {
-    console.log("Key pressed:", e.key);
     if (e.key === "Enter") {
       e.preventDefault();
       triggerSearch();
