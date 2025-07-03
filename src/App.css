@@ -19,6 +19,7 @@
     --border-color: #ccc;
     --background: #fefbfb;
     --login-bg: #fefbfb;
+    --login-background: #E6F5FF;
     --nav-color: #fafafa;
     --post-color: #fafafa;
     --primary: #FF1654;
@@ -66,6 +67,7 @@
     --text: #F5F5F5;
     --sub-text: #C8C8C8;
     --nav-color: #242424;
+    --login-background: #242424;
     --post-color: #2A2A2A;
     --border-color: #444;
     --success: #2fd170;
