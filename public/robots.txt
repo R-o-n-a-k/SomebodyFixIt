@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /package.json
+Disallow: /README.md
+
+Sitemap: https://somebodyfixit.netlify.app/sitemap.xml
