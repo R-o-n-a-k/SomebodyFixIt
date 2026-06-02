@@ -58,26 +58,34 @@ export default function useComments(token) {
   // };
 
   const initializeComments = async (posts) => {
-    const userId = await getUserId(token?.user?.id);
-    if (!userId) return;
+    const userId = await getUserId(token?.user?.id); // may be null
 
-    const commentMap = {};
+    // Fetch all comments in parallel
+    const commentsPromises = posts.map((p) => fetchComments(p.id));
+    const commentsArr = await Promise.all(commentsPromises);
+    const commentMap = posts.reduce((acc, p, i) => {
+      acc[p.id] = commentsArr[i] || [];
+      return acc;
+    }, {});
+
+    // compute upvotedStatuses only if userId is available
     const upvotedStatus = {};
+    if (userId) {
+      const upvotePromises = [];
+      posts.forEach((p) => {
+        (commentMap[p.id] || []).forEach((c) => {
+          upvotePromises.push(hasUserUpvotedComment(c.id, userId));
+        });
+      });
+      const upvoteResults = await Promise.all(upvotePromises);
 
-    // const fetchAllComments =
-    await Promise.all(
-      posts.map(async (item) => {
-        const postComments = await fetchComments(item.id);
-        commentMap[item.id] = postComments;
-
-        await Promise.all(
-          postComments.map(async (comment) => {
-            const hasUpvoted = await hasUserUpvotedComment(comment.id, userId);
-            upvotedStatus[comment.id] = hasUpvoted;
-          })
-        );
-      })
-    );
+      let idx = 0;
+      posts.forEach((p) => {
+        (commentMap[p.id] || []).forEach((c) => {
+          upvotedStatus[c.id] = !!upvoteResults[idx++];
+        });
+      });
+    }
 
     setComments(commentMap);
     setUpvotedComments(upvotedStatus);

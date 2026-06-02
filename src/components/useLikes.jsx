@@ -23,14 +23,26 @@ export default function useLikes(token) {
   const initializeLikes = async (posts) => {
     const uid = token?.user?.id;
     const userId = await getUserId(uid);
-    const counts = {};
-    const likedStatus = {};
 
-    for (let item of posts) {
-      const count = await countLikes(item.id);
-      counts[item.id] = count;
-      const hasLiked = await hasUserLiked(item.id, userId);
-      likedStatus[item.id] = hasLiked;
+    // Fetch all counts in parallel
+    const countPromises = posts.map((p) => countLikes(p.id));
+    const countsArr = await Promise.all(countPromises);
+    const counts = posts.reduce((acc, p, i) => {
+      acc[p.id] = countsArr[i] || 0;
+      return acc;
+    }, {});
+
+    // Fetch liked status in parallel if we have a userId
+    let likedStatus = {};
+    if (userId) {
+      const likedPromises = posts.map((p) => hasUserLiked(p.id, userId));
+      const likedArr = await Promise.all(likedPromises);
+      likedStatus = posts.reduce((acc, p, i) => {
+        acc[p.id] = !!likedArr[i];
+        return acc;
+      }, {});
+    } else {
+      likedStatus = posts.reduce((acc, p) => ((acc[p.id] = false), acc), {});
     }
 
     setLikeCounts(counts);
